@@ -1,0 +1,510 @@
+// ============================================================================
+// SCSS Variables - Homi Management Application
+// ============================================================================
+// ============================================================================
+
+// ============================================================================
+// COLOR PALETTE
+// ============================================================================
+
+// ----------------------------------------------------------------------------
+// Primary Colors - Purple Brand Identity
+// ----------------------------------------------------------------------------
+$color-primary-50: #faf5ff;
+$color-primary-100: #f3e8ff;
+$color-primary-200: #e9d5ff;
+$color-primary-300: #d8b4fe;
+$color-primary-400: #c084fc;
+$color-primary-500: #a855f7;
+$color-primary-600: #9333ea;
+$color-primary-700: #7c3aed;  // Main brand purple
+$color-primary-800: #6b21a8;
+$color-primary-900: #581c87;
+$color-primary-950: #3b0764;
+
+// ----------------------------------------------------------------------------
+// Secondary Colors - Deep Navy for UI Elements
+// ----------------------------------------------------------------------------
+$color-secondary-50: #f0f0ff;
+$color-secondary-100: #e0e0ff;
+$color-secondary-200: #c7c7ff;
+$color-secondary-300: #a5a5ff;
+$color-secondary-400: #7a7aff;
+$color-secondary-500: #5050ff;
+$color-secondary-600: #3030f7;
+$color-secondary-700: #2020db;
+$color-secondary-800: #1a1ab3;
+$color-secondary-900: #0a0a2e;  // Deep navy for buttons and important UI
+$color-secondary-950: #050514;
+
+// ----------------------------------------------------------------------------
+// Accent Colors - Light Purple for Highlights
+// ----------------------------------------------------------------------------
+$color-accent-50: #faf5ff;
+$color-accent-100: #f3e8ff;
+$color-accent-200: #e9d5ff;
+$color-accent-300: #d8b4fe;
+$color-accent-400: #c9a8ff;  // Light purple for icons/badges
+$color-accent-500: #b084fc;
+$color-accent-600: #9a5fff;
+
+// ----------------------------------------------------------------------------
+// Neutral Grays
+// ----------------------------------------------------------------------------
+$color-gray-50: #f9fafb;
+$color-gray-100: #f3f4f6;
+$color-gray-200: #e5e7eb;
+$color-gray-300: #d1d5db;
+$color-gray-400: #9ca3af;
+$color-gray-500: #6b7280;
+$color-gray-600: #4b5563;
+$color-gray-700: #374151;
+$color-gray-800: #1f2937;
+$color-gray-900: #111827;
+$color-gray-950: #030712;
+
+// ----------------------------------------------------------------------------
+// Semantic Colors
+// ----------------------------------------------------------------------------
+// Success
+$color-success-50: #f0fdf4;
+$color-success-100: #dcfce7;
+$color-success-200: #bbf7d0;
+$color-success-300: #86efac;
+$color-success-400: #4ade80;
+$color-success-500: #22c55e;
+$color-success-600: #16a34a;
+$color-success-700: #15803d;
+
+// Warning
+$color-warning-50: #fffbeb;
+$color-warning-100: #fef3c7;
+$color-warning-200: #fde68a;
+$color-warning-300: #fcd34d;
+$color-warning-400: #fbbf24;
+$color-warning-500: #f59e0b;
+$color-warning-600: #d97706;
+$color-warning-700: #b45309;
+
+// Error/Danger
+$color-error-50: #fef2f2;
+$color-error-100: #fee2e2;
+$color-error-200: #fecaca;
+$color-error-300: #fca5a5;
+$color-error-400: #f87171;
+$color-error-500: #ef4444;
+$color-error-600: #dc2626;
+$color-error-700: #b91c1c;
+
+// Info
+$color-info-50: #eff6ff;
+$color-info-100: #dbeafe;
+$color-info-200: #bfdbfe;
+$color-info-300: #93c5fd;
+$color-info-400: #60a5fa;
+$color-info-500: #3b82f6;
+$color-info-600: #2563eb;
+$color-info-700: #1d4ed8;
+
+// ----------------------------------------------------------------------------
+// Base Colors
+// ----------------------------------------------------------------------------
+$color-white: #ffffff;
+$color-black: #000000;
+$color-transparent: transparent;
+
+// ----------------------------------------------------------------------------
+// Background Colors
+// ----------------------------------------------------------------------------
+$color-bg-primary: $color-white;
+$color-bg-secondary: $color-gray-50;
+$color-bg-tertiary: $color-gray-100;
+$color-bg-hero: $color-primary-700;
+$color-bg-overlay: rgba(0, 0, 0, 0.5);
+$color-bg-card: $color-white;
+
+// ----------------------------------------------------------------------------
+// Text Colors
+// ----------------------------------------------------------------------------
+$color-text-primary: $color-gray-900;
+$color-text-secondary: $color-gray-600;
+$color-text-tertiary: $color-gray-500;
+$color-text-disabled: $color-gray-400;
+$color-text-inverse: $color-white;
+$color-text-link: $color-primary-600;
+$color-text-link-hover: $color-primary-700;
+$color-text-muted: $color-gray-500;
+
+// ----------------------------------------------------------------------------
+// Border Colors
+// ----------------------------------------------------------------------------
+$color-border-light: $color-gray-200;
+$color-border-medium: $color-gray-300;
+$color-border-dark: $color-gray-400;
+$color-border-focus: $color-primary-500;
+$color-border-error: $color-error-500;
+
+// ============================================================================
+// SPACING SYSTEM (8px base)
+// ============================================================================
+$spacing-0: 0;
+$spacing-1: 0.25rem;   // 4px
+$spacing-2: 0.5rem;    // 8px
+$spacing-3: 0.75rem;   // 12px
+$spacing-4: 1rem;      // 16px
+$spacing-5: 1.25rem;   // 20px
+$spacing-6: 1.5rem;    // 24px
+$spacing-7: 1.75rem;   // 28px
+$spacing-8: 2rem;      // 32px
+$spacing-10: 2.5rem;   // 40px
+$spacing-12: 3rem;     // 48px
+$spacing-16: 4rem;     // 64px
+$spacing-20: 5rem;     // 80px
+$spacing-24: 6rem;     // 96px
+$spacing-32: 8rem;     // 128px
+$spacing-40: 10rem;    // 160px
+$spacing-48: 12rem;    // 192px
+$spacing-56: 14rem;    // 224px
+$spacing-64: 16rem;    // 256px
+
+// ============================================================================
+// TYPOGRAPHY
+// ============================================================================
+
+// ----------------------------------------------------------------------------
+// Font Families
+// ----------------------------------------------------------------------------
+$font-family-primary: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+$font-family-secondary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+$font-family-mono: 'Fira Code', 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, monospace;
+
+// ----------------------------------------------------------------------------
+// Font Sizes (Type Scale)
+// ----------------------------------------------------------------------------
+$font-size-xs: 0.75rem;      // 12px
+$font-size-sm: 0.875rem;     // 14px
+$font-size-base: 1rem;       // 16px
+$font-size-lg: 1.125rem;     // 18px
+$font-size-xl: 1.25rem;      // 20px
+$font-size-2xl: 1.5rem;      // 24px
+$font-size-3xl: 1.875rem;    // 30px
+$font-size-4xl: 2.25rem;     // 36px
+$font-size-5xl: 3rem;        // 48px
+$font-size-6xl: 3.75rem;     // 60px
+$font-size-7xl: 4.5rem;      // 72px
+
+// ----------------------------------------------------------------------------
+// Font Weights
+// ----------------------------------------------------------------------------
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$font-weight-extrabold: 800;
+
+// ----------------------------------------------------------------------------
+// Line Heights
+// ----------------------------------------------------------------------------
+$line-height-tight: 1.25;
+$line-height-normal: 1.5;
+$line-height-relaxed: 1.625;
+$line-height-loose: 2;
+$line-height-snug: 1.375;
+$line-height-none: 1;
+
+
+// ----------------------------------------------------------------------------
+// Letter Spacing
+// ----------------------------------------------------------------------------
+$letter-spacing-tight: -0.025em;
+$letter-spacing-normal: 0;
+$letter-spacing-wide: 0.025em;
+$letter-spacing-wider: 0.05em;
+$letter-spacing-widest: 0.1em;
+
+$font-weight-thin: 100;
+$font-weight-extralight: 200;
+$font-weight-black: 900;
+
+// ============================================================================
+// LAYOUT & GRID
+// ============================================================================
+
+// ----------------------------------------------------------------------------
+// Container Widths
+// ----------------------------------------------------------------------------
+$container-sm: 640px;
+$container-md: 768px;
+$container-lg: 1024px;
+$container-xl: 1280px;
+$container-2xl: 1536px;
+
+// ----------------------------------------------------------------------------
+// Breakpoints
+// ----------------------------------------------------------------------------
+$breakpoint-xs: 480px;
+$breakpoint-sm: 640px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;
+$breakpoint-2xl: 1536px;
+
+// ----------------------------------------------------------------------------
+// Z-Index Scale
+// ----------------------------------------------------------------------------
+$z-index-dropdown: 1000;
+$z-index-sticky: 1020;
+$z-index-fixed: 1030;
+$z-index-modal-backdrop: 1040;
+$z-index-modal: 1050;
+$z-index-popover: 1060;
+$z-index-tooltip: 1070;
+
+// ============================================================================
+// BORDERS & RADIUS
+// ============================================================================
+
+// ----------------------------------------------------------------------------
+// Border Widths
+// ----------------------------------------------------------------------------
+$border-width-0: 0;
+$border-width-1: 1px;
+$border-width-2: 2px;
+$border-width-4: 4px;
+$border-width-8: 8px;
+
+// ----------------------------------------------------------------------------
+// Border Radius
+// ----------------------------------------------------------------------------
+$radius-none: 0;
+$radius-sm: 0.25rem;    // 4px
+$radius-base: 0.5rem;   // 8px
+$radius-md: 0.75rem;    // 12px
+$radius-lg: 1rem;       // 16px
+$radius-xl: 1.5rem;     // 24px
+$radius-2xl: 2rem;      // 32px
+$radius-full: 9999px;
+
+// ============================================================================
+// SHADOWS
+// ============================================================================
+$shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+$shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+$shadow-base: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+$shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+$shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+$shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+$shadow-2xl: 0 30px 60px -15px rgba(0, 0, 0, 0.3);
+$shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.05);
+
+// ============================================================================
+// TRANSITIONS & ANIMATIONS
+// ============================================================================
+
+// ----------------------------------------------------------------------------
+// Transition Durations
+// ----------------------------------------------------------------------------
+$transition-fast: 150ms;
+$transition-base: 200ms;
+$transition-slow: 300ms;
+$transition-slower: 500ms;
+
+// ----------------------------------------------------------------------------
+// Transition Timing Functions
+// ----------------------------------------------------------------------------
+$ease-in: cubic-bezier(0.4, 0, 1, 1);
+$ease-out: cubic-bezier(0, 0, 0.2, 1);
+$ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+// ----------------------------------------------------------------------------
+// Common Transitions
+// ----------------------------------------------------------------------------
+$transition-all: all $transition-base $ease-in-out;
+$transition-colors: color $transition-base $ease-in-out, 
+                    background-color $transition-base $ease-in-out, 
+                    border-color $transition-base $ease-in-out;
+$transition-transform: transform $transition-base $ease-in-out;
+$transition-opacity: opacity $transition-base $ease-in-out;
+
+// ============================================================================
+// COMPONENT-SPECIFIC VARIABLES
+// ============================================================================
+
+// ----------------------------------------------------------------------------
+// Buttons
+// ----------------------------------------------------------------------------
+$btn-padding-y-sm: $spacing-2;
+$btn-padding-x-sm: $spacing-4;
+$btn-padding-y-base: $spacing-3;
+$btn-padding-x-base: $spacing-6;
+$btn-padding-y-lg: $spacing-4;
+$btn-padding-x-lg: $spacing-8;
+
+$btn-font-size-sm: $font-size-sm;
+$btn-font-size-base: $font-size-base;
+$btn-font-size-lg: $font-size-lg;
+
+$btn-border-radius: $radius-lg;
+$btn-font-weight: $font-weight-semibold;
+
+// Primary Button
+$btn-primary-bg: $color-secondary-900;
+$btn-primary-bg-hover: darken($color-secondary-900, 5%);
+$btn-primary-text: $color-white;
+$btn-primary-border: $color-secondary-900;
+
+// Secondary Button
+$btn-secondary-bg: $color-primary-700;
+$btn-secondary-bg-hover: $color-primary-800;
+$btn-secondary-text: $color-white;
+$btn-secondary-border: $color-primary-700;
+
+// Outline Button
+$btn-outline-bg: transparent;
+$btn-outline-bg-hover: $color-gray-50;
+$btn-outline-text: $color-gray-700;
+$btn-outline-border: $color-gray-300;
+
+// ----------------------------------------------------------------------------
+// Forms & Inputs
+// ----------------------------------------------------------------------------
+$input-height-sm: 2.5rem;     // 40px
+$input-height-base: 3rem;     // 48px
+$input-height-lg: 3.5rem;     // 56px
+
+$input-padding-y: $spacing-3;
+$input-padding-x: $spacing-4;
+
+$input-font-size: $font-size-base;
+$input-border-width: $border-width-1;
+$input-border-color: $color-border-light;
+$input-border-radius: $radius-lg;
+
+$input-bg: $color-white;
+$input-text-color: $color-text-primary;
+$input-placeholder-color: $color-gray-400;
+
+$input-focus-border-color: $color-primary-500;
+$input-focus-ring-color: rgba($color-primary-500, 0.1);
+$input-focus-ring-width: 4px;
+
+$input-error-border-color: $color-error-500;
+$input-error-text-color: $color-error-600;
+
+// ----------------------------------------------------------------------------
+// Cards
+// ----------------------------------------------------------------------------
+$card-bg: $color-bg-card;
+$card-border-color: $color-border-light;
+$card-border-width: $border-width-1;
+$card-border-radius: $radius-xl;
+$card-padding: $spacing-8;
+$card-shadow: $shadow-md;
+$card-shadow-hover: $shadow-lg;
+
+// ----------------------------------------------------------------------------
+// Modals
+// ----------------------------------------------------------------------------
+$modal-backdrop-bg: $color-bg-overlay;
+$modal-bg: $color-white;
+$modal-border-radius: $radius-2xl;
+$modal-padding: $spacing-8;
+$modal-max-width: 32rem;
+$modal-shadow: $shadow-2xl;
+
+// ----------------------------------------------------------------------------
+// Navigation
+// ----------------------------------------------------------------------------
+$nav-height: 4rem;        // 64px
+$nav-bg: $color-white;
+$nav-border-color: $color-border-light;
+$nav-shadow: $shadow-sm;
+
+// ----------------------------------------------------------------------------
+// Sidebar
+// ----------------------------------------------------------------------------
+$sidebar-width: 16rem;    // 256px
+$sidebar-width-collapsed: 4rem;  // 64px
+$sidebar-bg: $color-white;
+$sidebar-border-color: $color-border-light;
+
+// ----------------------------------------------------------------------------
+// Badges
+// ----------------------------------------------------------------------------
+$badge-padding-y: $spacing-1;
+$badge-padding-x: $spacing-2;
+$badge-font-size: $font-size-xs;
+$badge-font-weight: $font-weight-semibold;
+$badge-border-radius: $radius-base;
+
+// ----------------------------------------------------------------------------
+// Avatar/Icon Circles
+// ----------------------------------------------------------------------------
+$avatar-size-xs: 1.5rem;   // 24px
+$avatar-size-sm: 2rem;     // 32px
+$avatar-size-base: 2.5rem; // 40px
+$avatar-size-lg: 4rem;     // 64px
+$avatar-size-xl: 6rem;     // 96px
+
+// Icon circle for login (from design)
+$icon-circle-size: 5rem;   // 80px
+$icon-circle-bg: $color-accent-400;
+$icon-circle-icon-bg: $color-secondary-900;
+
+// ----------------------------------------------------------------------------
+// Hero Section
+// ----------------------------------------------------------------------------
+$hero-bg: $color-primary-700;
+$hero-text-color: $color-white;
+$hero-heading-size: $font-size-5xl;
+$hero-subheading-size: $font-size-xl;
+
+// ============================================================================
+// CSS CUSTOM PROPERTIES (for dynamic theming)
+// ============================================================================
+:root {
+  // Primary Colors
+  --color-primary: #{$color-primary-700};
+  --color-primary-hover: #{$color-primary-800};
+  --color-secondary: #{$color-secondary-900};
+  --color-accent: #{$color-accent-400};
+  
+  // Text
+  --color-text-primary: #{$color-text-primary};
+  --color-text-secondary: #{$color-text-secondary};
+  --color-text-inverse: #{$color-text-inverse};
+  
+  // Backgrounds
+  --color-bg-primary: #{$color-bg-primary};
+  --color-bg-secondary: #{$color-bg-secondary};
+  --color-bg-hero: #{$color-bg-hero};
+  
+  // Borders
+  --color-border: #{$color-border-light};
+  --color-border-focus: #{$color-border-focus};
+  
+  // Spacing
+  --spacing-unit: #{$spacing-2};
+  
+  // Transitions
+  --transition-base: #{$transition-base};
+  
+  // Shadows
+  --shadow-card: #{$shadow-md};
+}
+
+// Dark mode support
+[data-theme="dark"] {
+  --color-text-primary: #{$color-gray-50};
+  --color-text-secondary: #{$color-gray-400};
+  --color-bg-primary: #{$color-gray-900};
+  --color-bg-secondary: #{$color-gray-800};
+  --color-border: #{$color-gray-700};
+  --line-height-none: #{$line-height-none};
+  --line-height-tight: #{$line-height-tight};
+  --line-height-snug: #{$line-height-snug};
+  --line-height-normal: #{$line-height-normal};
+  --line-height-relaxed: #{$line-height-relaxed};
+  --line-height-loose: #{$line-height-loose};
+}

@@ -1,0 +1,968 @@
+// ============================================================================
+// SCSS Mixins - Residential Complex Administration Platform
+// ============================================================================
+// Reusable mixins and utility functions
+// Optimized for PrimeVue + Nuxt integration
+// ============================================================================
+
+@import 'variables';
+
+// ============================================================================
+// RESPONSIVE BREAKPOINTS
+// ============================================================================
+
+// ----------------------------------------------------------------------------
+// Media Query Mixins
+// ----------------------------------------------------------------------------
+// Usage: @include respond-to('md') { ... }
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == 'xs' {
+    @media (min-width: $breakpoint-xs) {
+      @content;
+    }
+  } @else if $breakpoint == 'sm' {
+    @media (min-width: $breakpoint-sm) {
+      @content;
+    }
+  } @else if $breakpoint == 'md' {
+    @media (min-width: $breakpoint-md) {
+      @content;
+    }
+  } @else if $breakpoint == 'lg' {
+    @media (min-width: $breakpoint-lg) {
+      @content;
+    }
+  } @else if $breakpoint == 'xl' {
+    @media (min-width: $breakpoint-xl) {
+      @content;
+    }
+  } @else if $breakpoint == '2xl' {
+    @media (min-width: $breakpoint-2xl) {
+      @content;
+    }
+  }
+}
+
+// Usage: @include respond-to-max('md') { ... }
+@mixin respond-to-max($breakpoint) {
+  @if $breakpoint == 'xs' {
+    @media (max-width: calc(#{$breakpoint-xs} - 1)) {
+      @content;
+    }
+  } @else if $breakpoint == 'sm' {
+    @media (max-width: calc(#{$breakpoint-sm} - 1)) {
+      @content;
+    }
+  } @else if $breakpoint == 'md' {
+    @media (max-width: calc(#{$breakpoint-md} - 1)) {
+      @content;
+    }
+  } @else if $breakpoint == 'lg' {
+    @media (max-width: calc(#{$breakpoint-lg} - 1)) {
+      @content;
+    }
+  } @else if $breakpoint == 'xl' {
+    @media (max-width: calc(#{$breakpoint-xl} - 1)) {
+      @content;
+    }
+  } @else if $breakpoint == '2xl' {
+    @media (max-width: calc(#{$breakpoint-2xl} - 1)) {
+      @content;
+    }
+  }
+}
+
+// Usage: @include respond-between('md', 'lg') { ... }
+@mixin respond-between($min-breakpoint, $max-breakpoint) {
+  $min: null;
+  $max: null;
+
+  @if $min-breakpoint == 'xs' { $min: $breakpoint-xs; }
+  @else if $min-breakpoint == 'sm' { $min: $breakpoint-sm; }
+  @else if $min-breakpoint == 'md' { $min: $breakpoint-md; }
+  @else if $min-breakpoint == 'lg' { $min: $breakpoint-lg; }
+  @else if $min-breakpoint == 'xl' { $min: $breakpoint-xl; }
+  @else if $min-breakpoint == '2xl' { $min: $breakpoint-2xl; }
+
+  @if $max-breakpoint == 'xs' { $max: $breakpoint-xs; }
+  @else if $max-breakpoint == 'sm' { $max: $breakpoint-sm; }
+  @else if $max-breakpoint == 'md' { $max: $breakpoint-md; }
+  @else if $max-breakpoint == 'lg' { $max: $breakpoint-lg; }
+  @else if $max-breakpoint == 'xl' { $max: $breakpoint-xl; }
+  @else if $max-breakpoint == '2xl' { $max: $breakpoint-2xl; }
+
+  @media (min-width: $min) and (max-width: calc(#{$max} - 1)) {
+    @content;
+  }
+}
+
+// ============================================================================
+// LAYOUT & POSITIONING
+// ============================================================================
+
+// ----------------------------------------------------------------------------
+// Center Element (absolute positioning)
+// ----------------------------------------------------------------------------
+// Usage: @include center-absolute();
+@mixin center-absolute($position: absolute) {
+  position: $position;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// Usage: @include center-x();
+@mixin center-x($position: absolute) {
+  position: $position;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+// Usage: @include center-y();
+@mixin center-y($position: absolute) {
+  position: $position;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+// ----------------------------------------------------------------------------
+// Flexbox Helpers
+// ----------------------------------------------------------------------------
+// Usage: @include flex-center();
+@mixin flex-center($direction: row) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: center;
+  justify-content: center;
+}
+
+// Usage: @include flex-between();
+@mixin flex-between($align: center) {
+  display: flex;
+  align-items: $align;
+  justify-content: space-between;
+}
+
+// Usage: @include flex-column($gap: $spacing-4);
+@mixin flex-column($gap: 0) {
+  display: flex;
+  flex-direction: column;
+  @if $gap > 0 {
+    gap: $gap;
+  }
+}
+
+// Usage: @include flex-row($gap: $spacing-4);
+@mixin flex-row($gap: 0) {
+  display: flex;
+  flex-direction: row;
+  @if $gap > 0 {
+    gap: $gap;
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Grid Helpers
+// ----------------------------------------------------------------------------
+// Usage: @include grid($cols: 3, $gap: $spacing-6);
+@mixin grid($cols: 12, $gap: $spacing-4) {
+  display: grid;
+  grid-template-columns: repeat($cols, 1fr);
+  gap: $gap;
+}
+
+// Usage: @include grid-auto($min-width: 250px, $gap: $spacing-6);
+@mixin grid-auto($min-width: 250px, $gap: $spacing-4) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax($min-width, 1fr));
+  gap: $gap;
+}
+
+// ----------------------------------------------------------------------------
+// Container
+// ----------------------------------------------------------------------------
+// Usage: @include container($max-width: $container-xl);
+@mixin container($max-width: $container-xl, $padding: $spacing-4) {
+  max-width: $max-width;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $padding;
+  padding-right: $padding;
+  width: 100%;
+}
+
+// ============================================================================
+// TYPOGRAPHY
+// ============================================================================
+
+// ----------------------------------------------------------------------------
+// Fluid Typography
+// ----------------------------------------------------------------------------
+// Usage: @include fluid-type($font-size-base, $font-size-lg);
+@mixin fluid-type($min-size, $max-size, $min-width: $breakpoint-sm, $max-width: $breakpoint-xl) {
+  font-size: $min-size;
+  
+  @media (min-width: $min-width) {
+    font-size: calc(#{$min-size} + (#{strip-unit($max-size)} - #{strip-unit($min-size)}) * ((100vw - #{$min-width}) / (#{strip-unit($max-width)} - #{strip-unit($min-width)})));
+  }
+  
+  @media (min-width: $max-width) {
+    font-size: $max-size;
+  }
+}
+
+// Helper function to strip units
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+  @return $number;
+}
+
+// ----------------------------------------------------------------------------
+// Text Truncation
+// ----------------------------------------------------------------------------
+// Usage: @include truncate();
+@mixin truncate($max-width: 100%) {
+  max-width: $max-width;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Usage: @include line-clamp(3);
+@mixin line-clamp($lines: 2) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+// ----------------------------------------------------------------------------
+// Text Selection
+// ----------------------------------------------------------------------------
+// Usage: @include selection($bg: $color-primary-100, $color: $color-primary-900);
+@mixin selection($bg, $color: null) {
+  &::selection {
+    background: $bg;
+    @if $color {
+      color: $color;
+    }
+  }
+  &::-moz-selection {
+    background: $bg;
+    @if $color {
+      color: $color;
+    }
+  }
+}
+
+// ============================================================================
+// VISUAL EFFECTS
+// ============================================================================
+
+// ----------------------------------------------------------------------------
+// Box Shadow
+// ----------------------------------------------------------------------------
+// Usage: @include shadow('md');
+@mixin shadow($size: 'base') {
+  @if $size == 'xs' {
+    box-shadow: $shadow-xs;
+  } @else if $size == 'sm' {
+    box-shadow: $shadow-sm;
+  } @else if $size == 'base' {
+    box-shadow: $shadow-base;
+  } @else if $size == 'md' {
+    box-shadow: $shadow-md;
+  } @else if $size == 'lg' {
+    box-shadow: $shadow-lg;
+  } @else if $size == 'xl' {
+    box-shadow: $shadow-xl;
+  } @else if $size == '2xl' {
+    box-shadow: $shadow-2xl;
+  } @else if $size == 'inner' {
+    box-shadow: $shadow-inner;
+  } @else if $size == 'none' {
+    box-shadow: none;
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Border Radius
+// ----------------------------------------------------------------------------
+// Usage: @include radius('lg');
+@mixin radius($size: 'base') {
+  @if $size == 'none' {
+    border-radius: $radius-none;
+  } @else if $size == 'sm' {
+    border-radius: $radius-sm;
+  } @else if $size == 'base' {
+    border-radius: $radius-base;
+  } @else if $size == 'md' {
+    border-radius: $radius-md;
+  } @else if $size == 'lg' {
+    border-radius: $radius-lg;
+  } @else if $size == 'xl' {
+    border-radius: $radius-xl;
+  } @else if $size == '2xl' {
+    border-radius: $radius-2xl;
+  } @else if $size == 'full' {
+    border-radius: $radius-full;
+  } @else {
+    border-radius: $size;
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Glassmorphism Effect
+// ----------------------------------------------------------------------------
+// Usage: @include glass($blur: 10px, $opacity: 0.8);
+@mixin glass($blur: 10px, $opacity: 0.8, $bg-color: $color-white) {
+  background: rgba($bg-color, $opacity);
+  backdrop-filter: blur($blur);
+  -webkit-backdrop-filter: blur($blur);
+}
+
+// ----------------------------------------------------------------------------
+// Gradient Background
+// ----------------------------------------------------------------------------
+// Usage: @include gradient($color-primary-600, $color-primary-800);
+@mixin gradient($start-color, $end-color, $direction: 135deg) {
+  background: linear-gradient($direction, $start-color, $end-color);
+}
+
+// Usage: @include gradient-text($color-primary-600, $color-accent-400);
+@mixin gradient-text($start-color, $end-color, $direction: 135deg) {
+  background: linear-gradient($direction, $start-color, $end-color);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+// ============================================================================
+// TRANSITIONS & ANIMATIONS
+// ============================================================================
+
+// ----------------------------------------------------------------------------
+// Transition Mixin
+// ----------------------------------------------------------------------------
+// Usage: @include transition(all);
+@mixin transition($properties: all, $duration: $transition-base, $timing: $ease-in-out) {
+  transition: $properties $duration $timing;
+}
+
+// Usage: @include transition-multiple((color 200ms, background 200ms));
+@mixin transition-multiple($transitions) {
+  transition: $transitions;
+}
+
+// ----------------------------------------------------------------------------
+// Animation Mixin
+// ----------------------------------------------------------------------------
+// Usage: @include animation(fadeIn 300ms ease-out);
+@mixin animation($animation) {
+  animation: $animation;
+}
+
+// ----------------------------------------------------------------------------
+// Hover Effects
+// ----------------------------------------------------------------------------
+// Usage: @include hover-lift($distance: 4px);
+@mixin hover-lift($distance: 4px, $shadow: $shadow-lg) {
+  transition: $transition-all;
+  
+  &:hover {
+    transform: translateY(-#{$distance});
+    box-shadow: $shadow;
+  }
+}
+
+// Usage: @include hover-scale($scale: 1.05);
+@mixin hover-scale($scale: 1.05) {
+  transition: $transition-transform;
+  
+  &:hover {
+    transform: scale($scale);
+  }
+}
+
+// Usage: @include hover-fade($opacity: 0.8);
+@mixin hover-fade($opacity: 0.8) {
+  transition: $transition-opacity;
+  
+  &:hover {
+    opacity: $opacity;
+  }
+}
+
+// ============================================================================
+// FORM ELEMENTS
+// ============================================================================
+
+// ----------------------------------------------------------------------------
+// Input Styles
+// ----------------------------------------------------------------------------
+// Usage: @include input-base();
+@mixin input-base() {
+  width: 100%;
+  height: $input-height-base;
+  padding: $input-padding-y $input-padding-x;
+  font-family: $font-family-primary;
+  font-size: $input-font-size;
+  color: $input-text-color;
+  background: $input-bg;
+  border: $input-border-width solid $input-border-color;
+  border-radius: $input-border-radius;
+  transition: $transition-colors;
+  
+  &::placeholder {
+    color: $input-placeholder-color;
+  }
+  
+  &:focus {
+    outline: none;
+    border-color: $input-focus-border-color;
+    box-shadow: 0 0 0 $input-focus-ring-width $input-focus-ring-color;
+  }
+  
+  &:disabled {
+    background: $color-gray-100;
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
+
+// Usage: @include input-icon-left($icon-size: 2.5rem);
+@mixin input-icon-left($icon-size: 2.5rem, $padding: $spacing-12) {
+  position: relative;
+  
+  input {
+    padding-left: $padding;
+  }
+  
+  .input-icon {
+    position: absolute;
+    left: $spacing-4;
+    top: 50%;
+    transform: translateY(-50%);
+    width: $icon-size;
+    height: $icon-size;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+// Usage: @include input-icon-right($icon-size: 2.5rem);
+@mixin input-icon-right($icon-size: 2.5rem, $padding: $spacing-12) {
+  position: relative;
+  
+  input {
+    padding-right: $padding;
+  }
+  
+  .input-icon {
+    position: absolute;
+    right: $spacing-4;
+    top: 50%;
+    transform: translateY(-50%);
+    width: $icon-size;
+    height: $icon-size;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Focus Ring
+// ----------------------------------------------------------------------------
+// Usage: @include focus-ring($color: $color-primary-500);
+@mixin focus-ring($color: $color-border-focus, $width: 2px, $offset: 2px) {
+  &:focus-visible {
+    outline: $width solid $color;
+    outline-offset: $offset;
+  }
+}
+
+// ============================================================================
+// SCROLLBAR
+// ============================================================================
+
+// ----------------------------------------------------------------------------
+// Custom Scrollbar
+// ----------------------------------------------------------------------------
+// Usage: @include scrollbar();
+@mixin scrollbar(
+  $width: 8px,
+  $track-color: $color-gray-100,
+  $thumb-color: $color-gray-400,
+  $thumb-hover-color: $color-gray-500
+) {
+  &::-webkit-scrollbar {
+    width: $width;
+    height: $width;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: $track-color;
+    border-radius: $radius-base;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: $thumb-color;
+    border-radius: $radius-base;
+    
+    &:hover {
+      background: $thumb-hover-color;
+    }
+  }
+  
+  // Firefox
+  scrollbar-width: thin;
+  scrollbar-color: $thumb-color $track-color;
+}
+
+// Usage: @include hide-scrollbar();
+@mixin hide-scrollbar() {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+// ============================================================================
+// BUTTONS
+// ============================================================================
+
+// ----------------------------------------------------------------------------
+// Button Base
+// ----------------------------------------------------------------------------
+// Usage: @include button-base();
+@mixin button-base() {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-2;
+  font-family: $font-family-primary;
+  font-weight: $btn-font-weight;
+  border-radius: $btn-border-radius;
+  border: none;
+  cursor: pointer;
+  transition: $transition-colors;
+  text-decoration: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  user-select: none;
+  
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+  
+  &:focus-visible {
+    outline: 2px solid $color-border-focus;
+    outline-offset: 2px;
+  }
+}
+
+// Usage: @include button-variant($bg: $color-primary-600, $color: $color-white);
+@mixin button-variant(
+  $bg,
+  $color,
+  $bg-hover: darken($bg, 8%),
+  $border: $bg
+) {
+  background: $bg;
+  color: $color;
+  border: 1px solid $border;
+  
+  &:hover:not(:disabled) {
+    background: $bg-hover;
+  }
+  
+  &:active:not(:disabled) {
+    transform: scale(0.98);
+  }
+}
+
+// Usage: @include button-size($padding-y: $spacing-3, $padding-x: $spacing-6);
+@mixin button-size($padding-y, $padding-x, $font-size, $height: auto) {
+  padding: $padding-y $padding-x;
+  font-size: $font-size;
+  @if $height != auto {
+    height: $height;
+  }
+}
+
+// ============================================================================
+// CARDS
+// ============================================================================
+
+// ----------------------------------------------------------------------------
+// Card Base
+// ----------------------------------------------------------------------------
+// Usage: @include card();
+@mixin card(
+  $padding: $card-padding,
+  $radius: $card-border-radius,
+  $shadow: $card-shadow,
+  $bg: $card-bg
+) {
+  background: $bg;
+  padding: $padding;
+  border-radius: $radius;
+  box-shadow: $shadow;
+  transition: $transition-all;
+}
+
+// Usage: @include card-hover();
+@mixin card-hover($shadow-hover: $card-shadow-hover, $transform: translateY(-2px)) {
+  transition: $transition-all;
+  
+  &:hover {
+    box-shadow: $shadow-hover;
+    transform: $transform;
+  }
+}
+
+// ============================================================================
+// ASPECT RATIO
+// ============================================================================
+
+// ----------------------------------------------------------------------------
+// Aspect Ratio Box
+// ----------------------------------------------------------------------------
+// Usage: @include aspect-ratio(16, 9);
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+  
+  &::before {
+    content: '';
+    display: block;
+    padding-top: percentage($height / $width);
+  }
+  
+  > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+// Common ratios
+@mixin aspect-square() {
+  @include aspect-ratio(1, 1);
+}
+
+@mixin aspect-video() {
+  @include aspect-ratio(16, 9);
+}
+
+@mixin aspect-wide() {
+  @include aspect-ratio(21, 9);
+}
+
+// ============================================================================
+// VISIBILITY & ACCESSIBILITY
+// ============================================================================
+
+// ----------------------------------------------------------------------------
+// Screen Reader Only
+// ----------------------------------------------------------------------------
+// Usage: @include sr-only();
+@mixin sr-only() {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// Usage: @include sr-only-focusable();
+@mixin sr-only-focusable() {
+  &:focus,
+  &:active {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+  }
+}
+
+// ============================================================================
+// PRIMEVUE SPECIFIC MIXINS
+// ============================================================================
+
+// ----------------------------------------------------------------------------
+// Override PrimeVue Component
+// ----------------------------------------------------------------------------
+// Usage: @include primevue-override('p-button') { ... }
+@mixin primevue-override($component) {
+  :deep(.#{$component}) {
+    @content;
+  }
+}
+
+// Usage: @include primevue-theme-variable($property, $value);
+@mixin primevue-theme-variable($property, $value) {
+  --#{$property}: #{$value};
+}
+
+// ----------------------------------------------------------------------------
+// PrimeVue State Mixins
+// ----------------------------------------------------------------------------
+// Usage: @include p-state-hover() { ... }
+@mixin p-state-hover() {
+  &:not(:disabled):hover {
+    @content;
+  }
+}
+
+@mixin p-state-focus() {
+  &:not(:disabled):focus {
+    @content;
+  }
+}
+
+@mixin p-state-active() {
+  &:not(:disabled):active,
+  &:not(:disabled).p-highlight {
+    @content;
+  }
+}
+
+@mixin p-state-disabled() {
+  &:disabled,
+  &.p-disabled {
+    @content;
+  }
+}
+
+// ============================================================================
+// UTILITY MIXINS
+// ============================================================================
+
+// ----------------------------------------------------------------------------
+// Reset List
+// ----------------------------------------------------------------------------
+// Usage: @include reset-list();
+@mixin reset-list() {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+// ----------------------------------------------------------------------------
+// Reset Button
+// ----------------------------------------------------------------------------
+// Usage: @include reset-button();
+@mixin reset-button() {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  outline: none;
+}
+
+// ----------------------------------------------------------------------------
+// Clearfix
+// ----------------------------------------------------------------------------
+// Usage: @include clearfix();
+@mixin clearfix() {
+  &::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Hardware Acceleration
+// ----------------------------------------------------------------------------
+// Usage: @include hardware-accelerate();
+@mixin hardware-accelerate() {
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+// ----------------------------------------------------------------------------
+// Overlay
+// ----------------------------------------------------------------------------
+// Usage: @include overlay($bg: rgba(0,0,0,0.5));
+@mixin overlay($bg: $color-bg-overlay, $z-index: $z-index-modal-backdrop) {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: $bg;
+  z-index: $z-index;
+}
+
+// ----------------------------------------------------------------------------
+// Full Cover (for backgrounds)
+// ----------------------------------------------------------------------------
+// Usage: @include full-cover();
+@mixin full-cover() {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+// ----------------------------------------------------------------------------
+// Hide Element (accessibility friendly)
+// ----------------------------------------------------------------------------
+// Usage: @include hide();
+@mixin hide() {
+  display: none !important;
+}
+
+// Usage: @include invisible();
+@mixin invisible() {
+  visibility: hidden !important;
+}
+
+// ============================================================================
+// PRINT STYLES
+// ============================================================================
+
+// Usage: @include print() { ... }
+@mixin print() {
+  @media print {
+    @content;
+  }
+}
+
+// ============================================================================
+// DARK MODE
+// ============================================================================
+
+// Usage: @include dark-mode() { ... }
+@mixin dark-mode() {
+  @media (prefers-color-scheme: dark) {
+    @content;
+  }
+  
+  [data-theme='dark'] & {
+    @content;
+  }
+}
+
+// Usage: @include light-mode() { ... }
+@mixin light-mode() {
+  @media (prefers-color-scheme: light) {
+    @content;
+  }
+  
+  [data-theme='light'] & {
+    @content;
+  }
+}
+
+// ============================================================================
+// LEGACY MIXIN ALIASES (para compatibilidad con antiguos estilos)
+// ============================================================================
+
+// Alias de breakpoint-up/down para proyectos antiguos
+@mixin breakpoint-up($breakpoint) {
+  @include respond-to($breakpoint) {
+    @content;
+  }
+}
+
+@mixin breakpoint-down($breakpoint) {
+  @include respond-to-max($breakpoint) {
+    @content;
+  }
+}
+// ============================================================================
+// HEADING MIXIN
+// ============================================================================
+
+@mixin heading($level) {
+  @if $level == 1 {
+    font-size: $font-size-5xl;
+    font-weight: $font-weight-bold;
+    line-height: $line-height-tight;
+  } @else if $level == 2 {
+    font-size: $font-size-4xl;
+    font-weight: $font-weight-semibold;
+    line-height: $line-height-tight;
+  } @else if $level == 3 {
+    font-size: $font-size-3xl;
+    font-weight: $font-weight-semibold;
+    line-height: $line-height-snug;
+  } @else if $level == 4 {
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-medium;
+    line-height: $line-height-normal;
+  } @else if $level == 5 {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-medium;
+    line-height: $line-height-normal;
+  } @else if $level == 6 {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-medium;
+    line-height: $line-height-normal;
+  } @else {
+    @warn "Heading level `#{$level}` not recognized. Use 1–6.";
+  }
+}
+
+// ===========================================================
+// SCROLLBAR MIXIN (cross-browser)
+// ===========================================================
+@mixin custom-scrollbar(
+  $thumb-color: $color-gray-400,
+  $track-color: $color-gray-200,
+  $width: 8px
+) {
+  // Chrome, Edge, Safari
+  &::-webkit-scrollbar {
+    width: $width;
+    height: $width;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $track-color;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $thumb-color;
+    border-radius: 9999px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: darken($thumb-color, 10%);
+  }
+
+  // Firefox
+  scrollbar-color: $thumb-color $track-color;
+  scrollbar-width: thin;
+}
+// -----------------------------------------------------------------------------
+// 1. Text Truncate - corta texto con puntos suspensivos (…)
+// -----------------------------------------------------------------------------
+@mixin text-truncate() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

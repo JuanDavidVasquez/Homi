@@ -1,0 +1,729 @@
+// ============================================================================
+// PrimeVue Custom Theme - Residential Complex Administration Platform
+// ============================================================================
+// Custom theme configuration matching the design system
+// Purple (#7c3aed) and Navy (#0a0a2e) color scheme
+// ============================================================================
+
+@import '../abstracts/variables';
+@import '../abstracts/mixins';
+
+// ============================================================================
+// PRIMEVUE THEME VARIABLES (CSS Custom Properties)
+// ============================================================================
+
+:root {
+  // ----------------------------------------------------------------------------
+  // Primary Color (Purple Brand)
+  // ----------------------------------------------------------------------------
+  --primary-50: #{$color-primary-50};
+  --primary-100: #{$color-primary-100};
+  --primary-200: #{$color-primary-200};
+  --primary-300: #{$color-primary-300};
+  --primary-400: #{$color-primary-400};
+  --primary-500: #{$color-primary-500};
+  --primary-600: #{$color-primary-600};
+  --primary-700: #{$color-primary-700};
+  --primary-800: #{$color-primary-800};
+  --primary-900: #{$color-primary-900};
+  --primary-950: #{$color-primary-950};
+
+  // ----------------------------------------------------------------------------
+  // Surface Colors
+  // ----------------------------------------------------------------------------
+  --surface-0: #{$color-white};
+  --surface-50: #{$color-gray-50};
+  --surface-100: #{$color-gray-100};
+  --surface-200: #{$color-gray-200};
+  --surface-300: #{$color-gray-300};
+  --surface-400: #{$color-gray-400};
+  --surface-500: #{$color-gray-500};
+  --surface-600: #{$color-gray-600};
+  --surface-700: #{$color-gray-700};
+  --surface-800: #{$color-gray-800};
+  --surface-900: #{$color-gray-900};
+  --surface-950: #{$color-gray-950};
+
+  // ----------------------------------------------------------------------------
+  // Text Colors
+  // ----------------------------------------------------------------------------
+  --text-color: #{$color-text-primary};
+  --text-color-secondary: #{$color-text-secondary};
+  --text-color-muted: #{$color-text-tertiary};
+
+  // ----------------------------------------------------------------------------
+  // Border & Divider
+  // ----------------------------------------------------------------------------
+  --border-color: #{$color-border-light};
+  --divider-color: #{$color-border-light};
+
+  // ----------------------------------------------------------------------------
+  // Component Specific
+  // ----------------------------------------------------------------------------
+  --content-padding: #{$spacing-4};
+  --inline-spacing: #{$spacing-2};
+  --border-radius: #{$radius-lg};
+  --transition-duration: #{$transition-base};
+
+  // ----------------------------------------------------------------------------
+  // Focus Ring
+  // ----------------------------------------------------------------------------
+  --focus-ring-width: #{$input-focus-ring-width};
+  --focus-ring-color: #{$input-focus-ring-color};
+  --focus-ring-offset: 2px;
+
+  // ----------------------------------------------------------------------------
+  // Form Elements
+  // ----------------------------------------------------------------------------
+  --form-field-height: #{$input-height-base};
+  --form-field-padding-x: #{$input-padding-x};
+  --form-field-padding-y: #{$input-padding-y};
+  --form-field-border-color: #{$input-border-color};
+  --form-field-border-radius: #{$input-border-radius};
+  --form-field-focus-border-color: #{$input-focus-border-color};
+  --form-field-bg: #{$input-bg};
+
+  // ----------------------------------------------------------------------------
+  // Button Variables
+  // ----------------------------------------------------------------------------
+  --button-padding-y: #{$btn-padding-y-base};
+  --button-padding-x: #{$btn-padding-x-base};
+  --button-border-radius: #{$btn-border-radius};
+  --button-font-weight: #{$btn-font-weight};
+
+  // ----------------------------------------------------------------------------
+  // Card Variables
+  // ----------------------------------------------------------------------------
+  --card-border-radius: #{$card-border-radius};
+  --card-shadow: #{$card-shadow};
+  --card-padding: #{$card-padding};
+
+  // ----------------------------------------------------------------------------
+  // Modal/Dialog Variables
+  // ----------------------------------------------------------------------------
+  --dialog-border-radius: #{$modal-border-radius};
+  --dialog-shadow: #{$modal-shadow};
+  --overlay-bg: #{$modal-backdrop-bg};
+
+  // ----------------------------------------------------------------------------
+  // Semantic Colors
+  // ----------------------------------------------------------------------------
+  --success-50: #{$color-success-50};
+  --success-500: #{$color-success-500};
+  --success-600: #{$color-success-600};
+  --success-700: #{$color-success-700};
+
+  --warning-50: #{$color-warning-50};
+  --warning-500: #{$color-warning-500};
+  --warning-600: #{$color-warning-600};
+  --warning-700: #{$color-warning-700};
+
+  --error-50: #{$color-error-50};
+  --error-500: #{$color-error-500};
+  --error-600: #{$color-error-600};
+  --error-700: #{$color-error-700};
+
+  --info-50: #{$color-info-50};
+  --info-500: #{$color-info-500};
+  --info-600: #{$color-info-600};
+  --info-700: #{$color-info-700};
+
+  // ----------------------------------------------------------------------------
+  // Z-Index Scale
+  // ----------------------------------------------------------------------------
+  --z-index-dropdown: #{$z-index-dropdown};
+  --z-index-sticky: #{$z-index-sticky};
+  --z-index-fixed: #{$z-index-fixed};
+  --z-index-modal-backdrop: #{$z-index-modal-backdrop};
+  --z-index-modal: #{$z-index-modal};
+  --z-index-popover: #{$z-index-popover};
+  --z-index-tooltip: #{$z-index-tooltip};
+}
+
+// ============================================================================
+// DARK MODE THEME
+// ============================================================================
+
+[data-theme='dark'] {
+  --surface-0: #{$color-gray-950};
+  --surface-50: #{$color-gray-900};
+  --surface-100: #{$color-gray-800};
+  --surface-200: #{$color-gray-700};
+  --surface-300: #{$color-gray-600};
+  --surface-400: #{$color-gray-500};
+  --surface-500: #{$color-gray-400};
+  --surface-600: #{$color-gray-300};
+  --surface-700: #{$color-gray-200};
+  --surface-800: #{$color-gray-100};
+  --surface-900: #{$color-gray-50};
+
+  --text-color: #{$color-gray-50};
+  --text-color-secondary: #{$color-gray-400};
+  --text-color-muted: #{$color-gray-500};
+
+  --border-color: #{$color-gray-700};
+  --divider-color: #{$color-gray-700};
+
+  --form-field-bg: #{$color-gray-900};
+  --form-field-border-color: #{$color-gray-700};
+
+  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
+  --dialog-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+// ============================================================================
+// PRIMEVUE COMPONENT THEMES
+// ============================================================================
+
+// ----------------------------------------------------------------------------
+// Global Base Styles
+// ----------------------------------------------------------------------------
+.p-component {
+  font-family: $font-family-primary;
+  font-size: $font-size-base;
+  font-weight: $font-weight-normal;
+}
+
+// ----------------------------------------------------------------------------
+// Button Theme
+// ----------------------------------------------------------------------------
+.p-button {
+  padding: var(--button-padding-y) var(--button-padding-x);
+  border-radius: var(--button-border-radius);
+  font-weight: var(--button-font-weight);
+  transition: $transition-colors;
+  border: none;
+
+  &.p-button-primary {
+    background: $btn-primary-bg;
+    color: $btn-primary-text;
+
+    &:not(:disabled):hover {
+      background: $btn-primary-bg-hover;
+    }
+
+    &:not(:disabled):active {
+      background: darken($btn-primary-bg, 10%);
+    }
+  }
+
+  &.p-button-secondary {
+    background: $btn-secondary-bg;
+    color: $btn-secondary-text;
+
+    &:not(:disabled):hover {
+      background: $btn-secondary-bg-hover;
+    }
+
+    &:not(:disabled):active {
+      background: darken($btn-secondary-bg, 10%);
+    }
+  }
+
+  &.p-button-outlined {
+    background: $btn-outline-bg;
+    color: $btn-outline-text;
+    border: $border-width-2 solid $btn-outline-border;
+
+    &:not(:disabled):hover {
+      background: $btn-outline-bg-hover;
+      border-color: darken($btn-outline-border, 10%);
+    }
+  }
+
+  &.p-button-text {
+    background: transparent;
+    color: $color-text-link;
+
+    &:not(:disabled):hover {
+      background: $color-gray-100;
+    }
+  }
+
+  &.p-button-sm {
+    padding: $btn-padding-y-sm $btn-padding-x-sm;
+    font-size: $btn-font-size-sm;
+    height: 2.5rem;
+  }
+
+  &.p-button-lg {
+    padding: $btn-padding-y-lg $btn-padding-x-lg;
+    font-size: $btn-font-size-lg;
+    height: 3.5rem;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--focus-ring-color);
+    outline-offset: var(--focus-ring-offset);
+  }
+}
+
+// ----------------------------------------------------------------------------
+// InputText Theme (Email and Password inputs)
+// ----------------------------------------------------------------------------
+.p-inputtext {
+  width: 100%;
+  height: var(--form-field-height);
+  padding: var(--form-field-padding-y) var(--form-field-padding-x);
+  background: var(--form-field-bg);
+  border: $input-border-width solid var(--form-field-border-color);
+  border-radius: var(--form-field-border-radius);
+  color: var(--text-color);
+  transition: $transition-colors;
+
+  &::placeholder {
+    color: $input-placeholder-color;
+  }
+
+  &:enabled:focus {
+    outline: none;
+    border-color: var(--form-field-focus-border-color);
+    box-shadow: 0 0 0 var(--focus-ring-width) var(--focus-ring-color);
+  }
+
+  &:disabled {
+    background: var(--surface-100);
+    opacity: 0.6;
+  }
+
+  &.p-invalid {
+    border-color: $input-error-border-color;
+
+    &:enabled:focus {
+      border-color: $input-error-border-color;
+      box-shadow: 0 0 0 var(--focus-ring-width) rgba($color-error-500, 0.1);
+    }
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Password Input
+// ----------------------------------------------------------------------------
+.p-password {
+  width: 100%;
+
+  .p-inputtext {
+    width: 100%;
+  }
+
+  .p-password-toggle-icon {
+    color: var(--text-color-secondary);
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Checkbox Theme
+// ----------------------------------------------------------------------------
+.p-checkbox {
+  width: 1.25rem;
+  height: 1.25rem;
+
+  .p-checkbox-box {
+    width: 1.25rem;
+    height: 1.25rem;
+    border: $border-width-2 solid var(--border-color);
+    border-radius: $radius-sm;
+    background: var(--form-field-bg);
+    transition: $transition-colors;
+
+    &.p-highlight {
+      background: $color-primary-600;
+      border-color: $color-primary-600;
+    }
+
+    &:not(.p-disabled):hover {
+      border-color: $color-primary-500;
+    }
+
+    &.p-focus {
+      box-shadow: 0 0 0 var(--focus-ring-width) var(--focus-ring-color);
+    }
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Card Theme
+// ----------------------------------------------------------------------------
+.p-card {
+  background: var(--surface-0);
+  border-radius: var(--card-border-radius);
+  box-shadow: var(--card-shadow);
+
+  .p-card-body {
+    padding: var(--card-padding);
+  }
+
+  .p-card-title {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-semibold;
+    color: var(--text-color);
+    margin-bottom: $spacing-4;
+  }
+
+  .p-card-subtitle {
+    font-size: $font-size-sm;
+    color: var(--text-color-secondary);
+    margin-bottom: $spacing-3;
+  }
+
+  .p-card-content {
+    padding: $spacing-4 0;
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Dialog/Modal Theme
+// ----------------------------------------------------------------------------
+.p-dialog {
+  border-radius: var(--dialog-border-radius);
+  box-shadow: var(--dialog-shadow);
+  background: var(--surface-0);
+
+  .p-dialog-header {
+    padding: $spacing-6;
+    border-bottom: $border-width-1 solid var(--border-color);
+
+    .p-dialog-title {
+      font-size: $font-size-xl;
+      font-weight: $font-weight-semibold;
+      color: var(--text-color);
+    }
+  }
+
+  .p-dialog-content {
+    padding: $spacing-6;
+    color: var(--text-color);
+  }
+
+  .p-dialog-footer {
+    padding: $spacing-6;
+    border-top: $border-width-1 solid var(--border-color);
+    display: flex;
+    gap: $spacing-3;
+    justify-content: flex-end;
+  }
+}
+
+.p-dialog-mask {
+  background: var(--overlay-bg);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+
+// ----------------------------------------------------------------------------
+// Message/Alert Theme (Warning message from reset password)
+// ----------------------------------------------------------------------------
+.p-message {
+  padding: $spacing-4;
+  border-radius: $radius-lg;
+  display: flex;
+  align-items: flex-start;
+  gap: $spacing-3;
+
+  &.p-message-info {
+    background: $color-info-50;
+    border: $border-width-1 solid $color-info-200;
+    color: $color-info-700;
+
+    .p-message-icon {
+      color: $color-info-600;
+    }
+  }
+
+  &.p-message-success {
+    background: $color-success-50;
+    border: $border-width-1 solid $color-success-200;
+    color: $color-success-700;
+
+    .p-message-icon {
+      color: $color-success-600;
+    }
+  }
+
+  &.p-message-warn {
+    background: $color-warning-50;
+    border: $border-width-1 solid $color-warning-200;
+    color: $color-warning-700;
+
+    .p-message-icon {
+      color: $color-warning-600;
+    }
+  }
+
+  &.p-message-error {
+    background: $color-error-50;
+    border: $border-width-1 solid $color-error-200;
+    color: $color-error-700;
+
+    .p-message-icon {
+      color: $color-error-600;
+    }
+  }
+
+  .p-message-text {
+    font-size: $font-size-sm;
+    line-height: $line-height-relaxed;
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Badge Theme
+// ----------------------------------------------------------------------------
+.p-badge {
+  padding: $badge-padding-y $badge-padding-x;
+  font-size: $badge-font-size;
+  font-weight: $badge-font-weight;
+  border-radius: $badge-border-radius;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  &.p-badge-primary {
+    background: $color-primary-100;
+    color: $color-primary-700;
+  }
+
+  &.p-badge-success {
+    background: $color-success-100;
+    color: $color-success-700;
+  }
+
+  &.p-badge-warning {
+    background: $color-warning-100;
+    color: $color-warning-700;
+  }
+
+  &.p-badge-danger {
+    background: $color-error-100;
+    color: $color-error-700;
+  }
+
+  &.p-badge-info {
+    background: $color-info-100;
+    color: $color-info-700;
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Avatar Theme
+// ----------------------------------------------------------------------------
+.p-avatar {
+  background: $color-gray-200;
+  border-radius: $radius-full;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-color);
+
+  &.p-avatar-sm {
+    width: $avatar-size-sm;
+    height: $avatar-size-sm;
+    font-size: $font-size-sm;
+  }
+
+  &.p-avatar-normal {
+    width: $avatar-size-base;
+    height: $avatar-size-base;
+    font-size: $font-size-base;
+  }
+
+  &.p-avatar-lg {
+    width: $avatar-size-lg;
+    height: $avatar-size-lg;
+    font-size: $font-size-xl;
+  }
+
+  &.p-avatar-xl {
+    width: $avatar-size-xl;
+    height: $avatar-size-xl;
+    font-size: $font-size-3xl;
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Dropdown/Select Theme
+// ----------------------------------------------------------------------------
+.p-dropdown {
+  background: var(--form-field-bg);
+  border: $input-border-width solid var(--form-field-border-color);
+  border-radius: var(--form-field-border-radius);
+  height: var(--form-field-height);
+  transition: $transition-colors;
+
+  &:not(.p-disabled):hover {
+    border-color: var(--form-field-focus-border-color);
+  }
+
+  &.p-focus {
+    outline: none;
+    border-color: var(--form-field-focus-border-color);
+    box-shadow: 0 0 0 var(--focus-ring-width) var(--focus-ring-color);
+  }
+
+  .p-dropdown-label {
+    padding: var(--form-field-padding-y) var(--form-field-padding-x);
+    color: var(--text-color);
+
+    &.p-placeholder {
+      color: $input-placeholder-color;
+    }
+  }
+}
+
+// ----------------------------------------------------------------------------
+// DataTable Theme
+// ----------------------------------------------------------------------------
+.p-datatable {
+  .p-datatable-header {
+    background: var(--surface-50);
+    padding: $spacing-4;
+    border: $border-width-1 solid var(--border-color);
+    border-bottom: none;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+  }
+
+  .p-datatable-thead > tr > th {
+    background: var(--surface-50);
+    color: var(--text-color);
+    padding: $spacing-4;
+    border: $border-width-1 solid var(--border-color);
+    font-weight: $font-weight-semibold;
+  }
+
+  .p-datatable-tbody > tr {
+    background: var(--surface-0);
+    transition: $transition-colors;
+
+    &:hover {
+      background: var(--surface-50);
+    }
+
+    > td {
+      padding: $spacing-4;
+      border: $border-width-1 solid var(--border-color);
+      color: var(--text-color);
+    }
+  }
+
+  .p-datatable-footer {
+    background: var(--surface-50);
+    padding: $spacing-4;
+    border: $border-width-1 solid var(--border-color);
+    border-top: none;
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Toast/Notification Theme
+// ----------------------------------------------------------------------------
+.p-toast {
+  .p-toast-message {
+    border-radius: $radius-lg;
+    box-shadow: $shadow-lg;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+
+    &.p-toast-message-info {
+      background: rgba($color-info-50, 0.95);
+      border: $border-width-1 solid $color-info-200;
+      
+      .p-toast-message-icon {
+        color: $color-info-600;
+      }
+    }
+
+    &.p-toast-message-success {
+      background: rgba($color-success-50, 0.95);
+      border: $border-width-1 solid $color-success-200;
+      
+      .p-toast-message-icon {
+        color: $color-success-600;
+      }
+    }
+
+    &.p-toast-message-warn {
+      background: rgba($color-warning-50, 0.95);
+      border: $border-width-1 solid $color-warning-200;
+      
+      .p-toast-message-icon {
+        color: $color-warning-600;
+      }
+    }
+
+    &.p-toast-message-error {
+      background: rgba($color-error-50, 0.95);
+      border: $border-width-1 solid $color-error-200;
+      
+      .p-toast-message-icon {
+        color: $color-error-600;
+      }
+    }
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Tooltip Theme
+// ----------------------------------------------------------------------------
+.p-tooltip {
+  .p-tooltip-text {
+    background: $color-gray-900;
+    color: $color-white;
+    padding: $spacing-2 $spacing-3;
+    border-radius: $radius-base;
+    font-size: $font-size-sm;
+    box-shadow: $shadow-md;
+  }
+
+  &.p-tooltip-top .p-tooltip-arrow {
+    border-top-color: $color-gray-900;
+  }
+
+  &.p-tooltip-bottom .p-tooltip-arrow {
+    border-bottom-color: $color-gray-900;
+  }
+
+  &.p-tooltip-left .p-tooltip-arrow {
+    border-left-color: $color-gray-900;
+  }
+
+  &.p-tooltip-right .p-tooltip-arrow {
+    border-right-color: $color-gray-900;
+  }
+}
+
+// ----------------------------------------------------------------------------
+// ProgressBar Theme
+// ----------------------------------------------------------------------------
+.p-progressbar {
+  height: 0.5rem;
+  background: var(--surface-200);
+  border-radius: $radius-full;
+  overflow: hidden;
+
+  .p-progressbar-value {
+    background: $color-primary-600;
+    transition: width $transition-base $ease-in-out;
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Skeleton Theme
+// ----------------------------------------------------------------------------
+.p-skeleton {
+  background: var(--surface-200);
+  border-radius: var(--border-radius);
+  animation: p-skeleton-animation 1.2s ease-in-out infinite;
+}
+
+@keyframes p-skeleton-animation {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
+}

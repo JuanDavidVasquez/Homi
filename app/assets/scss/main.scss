@@ -1,0 +1,56 @@
+// Main SCSS File - Following 7-1 Architecture Pattern
+// This file imports all partials in the correct order
+
+// 1. Abstracts - Variables, functions, mixins
+@import 'abstracts/variables';
+//@import 'abstracts/functions';
+@import 'abstracts/mixins';
+@import 'abstracts/placeholders';
+//@import 'abstracts/animations';
+
+// 2. Base - Reset, typography, base elements
+@import 'base/reset';
+@import 'base/typography';
+//@import 'base/base';
+//@import 'base/helpers';
+
+// 3. Themes - Theme variations
+//@import 'themes/default';
+//@import 'themes/dark';
+@import 'themes/primevue-custom';
+
+// 4. Layouts - Major layout components
+/* @import 'layouts/header';
+@import 'layouts/sidebar';
+@import 'layouts/footer';
+@import 'layouts/navigation';
+@import 'layouts/grid';
+@import 'layouts/auth';
+@import 'layouts/admin'; */
+
+// 5. Components - Specific UI components
+/* @import 'components/buttons';
+@import 'components/cards';
+@import 'components/forms';
+@import 'components/modals';
+@import 'components/tables';
+@import 'components/alerts';
+@import 'components/badges';
+@import 'components/dropdowns';
+@import 'components/tooltips';
+@import 'components/avatars';
+@import 'components/loading'; */
+
+// 6. Pages - Page-specific styles
+@import 'pages/customLogin';
+/*@import 'pages/dashboard';
+@import 'pages/residents';
+@import 'pages/payments';
+@import 'pages/profile';
+@import 'pages/settings';
+@import 'pages/error'; */
+
+// 7. Utils - Utilities and overrides (should be last)
+/* @import 'utils/utilities';
+@import 'utils/print';
+@import 'utils/shame';  */

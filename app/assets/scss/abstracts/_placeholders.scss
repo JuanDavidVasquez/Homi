@@ -1,0 +1,1028 @@
+// ============================================================================
+// SCSS Placeholders - Residential Complex Administration Platform
+// ============================================================================
+// Reusable component patterns and common styles
+// Optimized for PrimeVue + Nuxt integration
+// Use with @extend %placeholder-name
+// ============================================================================
+
+@import 'variables';
+
+// ============================================================================
+// LAYOUT PATTERNS
+// ============================================================================
+
+// ----------------------------------------------------------------------------
+// Container & Centering
+// ----------------------------------------------------------------------------
+%container-center {
+  max-width: $container-xl;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $spacing-4;
+  padding-right: $spacing-4;
+}
+
+%flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+%flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+%flex-column-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+%flex-start {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+%absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+%full-screen {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+// ----------------------------------------------------------------------------
+// Grid Patterns
+// ----------------------------------------------------------------------------
+%grid-auto-fit {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: $spacing-6;
+}
+
+%grid-auto-fill {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: $spacing-4;
+}
+
+%grid-2-col {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $spacing-6;
+}
+
+// ============================================================================
+// CARD & MODAL PATTERNS
+// ============================================================================
+
+// ----------------------------------------------------------------------------
+// Base Card (extends PrimeVue Card)
+// ----------------------------------------------------------------------------
+%card-base {
+  background: $card-bg;
+  border: $card-border-width solid $card-border-color;
+  border-radius: $card-border-radius;
+  padding: $card-padding;
+  box-shadow: $card-shadow;
+  transition: $transition-all;
+}
+
+%card-hover {
+  @extend %card-base;
+  
+  &:hover {
+    box-shadow: $card-shadow-hover;
+    transform: translateY(-2px);
+  }
+}
+
+%card-interactive {
+  @extend %card-hover;
+  cursor: pointer;
+  
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Modal/Dialog Card (like login card)
+// ----------------------------------------------------------------------------
+%modal-card {
+  background: $modal-bg;
+  border-radius: $modal-border-radius;
+  padding: $modal-padding;
+  box-shadow: $modal-shadow;
+  max-width: $modal-max-width;
+  width: 100%;
+  position: relative;
+  animation: modalFadeIn $transition-base $ease-out;
+}
+
+%modal-card-large {
+  @extend %modal-card;
+  max-width: 42rem; // 672px
+  padding: $spacing-10;
+}
+
+%modal-card-small {
+  @extend %modal-card;
+  max-width: 28rem; // 448px
+  padding: $spacing-6;
+}
+
+// ----------------------------------------------------------------------------
+// Modal Backdrop
+// ----------------------------------------------------------------------------
+%modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: $modal-backdrop-bg;
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  z-index: $z-index-modal-backdrop;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-4;
+  animation: backdropFadeIn $transition-base $ease-out;
+}
+
+// ============================================================================
+// BUTTON PATTERNS (extends PrimeVue Button)
+// ============================================================================
+
+// ----------------------------------------------------------------------------
+// Button Base
+// ----------------------------------------------------------------------------
+%btn-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-2;
+  font-family: $font-family-primary;
+  font-weight: $btn-font-weight;
+  border-radius: $btn-border-radius;
+  border: none;
+  cursor: pointer;
+  transition: $transition-colors;
+  text-decoration: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  user-select: none;
+  
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+  
+  &:focus-visible {
+    outline: 2px solid $color-border-focus;
+    outline-offset: 2px;
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Button Sizes
+// ----------------------------------------------------------------------------
+%btn-sm {
+  @extend %btn-base;
+  padding: $btn-padding-y-sm $btn-padding-x-sm;
+  font-size: $btn-font-size-sm;
+  height: 2.5rem; // 40px
+}
+
+%btn-base-size {
+  @extend %btn-base;
+  padding: $btn-padding-y-base $btn-padding-x-base;
+  font-size: $btn-font-size-base;
+  height: 3rem; // 48px
+}
+
+%btn-lg {
+  @extend %btn-base;
+  padding: $btn-padding-y-lg $btn-padding-x-lg;
+  font-size: $btn-font-size-lg;
+  height: 3.5rem; // 56px
+}
+
+// ----------------------------------------------------------------------------
+// Button Variants
+// ----------------------------------------------------------------------------
+%btn-primary {
+  @extend %btn-base-size;
+  background: $btn-primary-bg;
+  color: $btn-primary-text;
+  
+  &:hover:not(:disabled) {
+    background: $btn-primary-bg-hover;
+  }
+  
+  &:active:not(:disabled) {
+    transform: scale(0.98);
+  }
+}
+
+%btn-secondary {
+  @extend %btn-base-size;
+  background: $btn-secondary-bg;
+  color: $btn-secondary-text;
+  
+  &:hover:not(:disabled) {
+    background: $btn-secondary-bg-hover;
+  }
+}
+
+%btn-outline {
+  @extend %btn-base-size;
+  background: $btn-outline-bg;
+  color: $btn-outline-text;
+  border: $border-width-2 solid $btn-outline-border;
+  
+  &:hover:not(:disabled) {
+    background: $btn-outline-bg-hover;
+    border-color: darken($btn-outline-border, 10%);
+  }
+}
+
+%btn-ghost {
+  @extend %btn-base-size;
+  background: transparent;
+  color: $color-text-secondary;
+  
+  &:hover:not(:disabled) {
+    background: $color-gray-100;
+    color: $color-text-primary;
+  }
+}
+
+%btn-link {
+  @extend %btn-base;
+  background: transparent;
+  color: $color-text-link;
+  padding: 0;
+  height: auto;
+  
+  &:hover:not(:disabled) {
+    color: $color-text-link-hover;
+    text-decoration: underline;
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Button Full Width
+// ----------------------------------------------------------------------------
+%btn-block {
+  width: 100%;
+  display: flex;
+}
+
+// ============================================================================
+// FORM & INPUT PATTERNS (extends PrimeVue InputText)
+// ============================================================================
+
+// ----------------------------------------------------------------------------
+// Input Base
+// ----------------------------------------------------------------------------
+%input-base {
+  width: 100%;
+  height: $input-height-base;
+  padding: $input-padding-y $input-padding-x;
+  font-family: $font-family-primary;
+  font-size: $input-font-size;
+  color: $input-text-color;
+  background: $input-bg;
+  border: $input-border-width solid $input-border-color;
+  border-radius: $input-border-radius;
+  transition: $transition-colors;
+  
+  &::placeholder {
+    color: $input-placeholder-color;
+  }
+  
+  &:focus {
+    outline: none;
+    border-color: $input-focus-border-color;
+    box-shadow: 0 0 0 $input-focus-ring-width $input-focus-ring-color;
+  }
+  
+  &:disabled {
+    background: $color-gray-100;
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Input with Icon (like password and email fields)
+// ----------------------------------------------------------------------------
+%input-with-icon {
+  position: relative;
+  
+  input {
+    @extend %input-base;
+    padding-left: $spacing-12; // Space for icon
+  }
+  
+  .input-icon {
+    position: absolute;
+    left: $spacing-4;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    background: $color-secondary-900;
+    color: $color-white;
+    border-radius: $radius-base;
+    pointer-events: none;
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Input States
+// ----------------------------------------------------------------------------
+%input-error {
+  border-color: $input-error-border-color;
+  
+  &:focus {
+    border-color: $input-error-border-color;
+    box-shadow: 0 0 0 $input-focus-ring-width rgba($color-error-500, 0.1);
+  }
+}
+
+%input-success {
+  border-color: $color-success-500;
+  
+  &:focus {
+    border-color: $color-success-500;
+    box-shadow: 0 0 0 $input-focus-ring-width rgba($color-success-500, 0.1);
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Form Group
+// ----------------------------------------------------------------------------
+%form-group {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-2;
+  margin-bottom: $spacing-6;
+}
+
+%form-label {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+  margin-bottom: $spacing-1;
+}
+
+%form-helper-text {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  margin-top: $spacing-1;
+}
+
+%form-error-text {
+  font-size: $font-size-sm;
+  color: $input-error-text-color;
+  margin-top: $spacing-1;
+  display: flex;
+  align-items: center;
+  gap: $spacing-1;
+}
+
+// ============================================================================
+// ICON PATTERNS
+// ============================================================================
+
+// ----------------------------------------------------------------------------
+// Icon Circle (like building icon and email icon)
+// ----------------------------------------------------------------------------
+%icon-circle-base {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: $radius-full;
+  flex-shrink: 0;
+}
+
+%icon-circle-sm {
+  @extend %icon-circle-base;
+  width: $avatar-size-sm;
+  height: $avatar-size-sm;
+  font-size: $font-size-base;
+}
+
+%icon-circle-base-size {
+  @extend %icon-circle-base;
+  width: $avatar-size-base;
+  height: $avatar-size-base;
+  font-size: $font-size-lg;
+}
+
+%icon-circle-lg {
+  @extend %icon-circle-base;
+  width: $avatar-size-lg;
+  height: $avatar-size-lg;
+  font-size: $font-size-2xl;
+}
+
+%icon-circle-xl {
+  @extend %icon-circle-base;
+  width: $avatar-size-xl;
+  height: $avatar-size-xl;
+  font-size: $font-size-3xl;
+}
+
+// ----------------------------------------------------------------------------
+// Specific Icon Styles (from designs)
+// ----------------------------------------------------------------------------
+// Building icon circle (light purple background with dark icon)
+%icon-circle-building {
+  @extend %icon-circle-xl;
+  background: $icon-circle-bg;
+  position: relative;
+  
+  .icon-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.5rem;
+    height: 3.5rem;
+    background: $icon-circle-icon-bg;
+    color: $color-white;
+    border-radius: $radius-base;
+  }
+}
+
+// Email confirmation icon (purple with checkmark)
+%icon-circle-email {
+  @extend %icon-circle-lg;
+  background: $color-primary-600;
+  color: $color-white;
+  margin: 0 auto $spacing-6;
+}
+
+// ============================================================================
+// ALERT & MESSAGE PATTERNS (extends PrimeVue Message)
+// ============================================================================
+
+// ----------------------------------------------------------------------------
+// Alert Base
+// ----------------------------------------------------------------------------
+%alert-base {
+  display: flex;
+  align-items: flex-start;
+  gap: $spacing-3;
+  padding: $spacing-4;
+  border-radius: $radius-lg;
+  font-size: $font-size-sm;
+  line-height: $line-height-relaxed;
+  border: $border-width-1 solid transparent;
+}
+
+// ----------------------------------------------------------------------------
+// Alert Variants
+// ----------------------------------------------------------------------------
+%alert-info {
+  @extend %alert-base;
+  background: $color-info-50;
+  border-color: $color-info-200;
+  color: $color-info-700;
+}
+
+%alert-success {
+  @extend %alert-base;
+  background: $color-success-50;
+  border-color: $color-success-200;
+  color: $color-success-700;
+}
+
+%alert-warning {
+  @extend %alert-base;
+  background: $color-warning-50;
+  border-color: $color-warning-200;
+  color: $color-warning-700;
+}
+
+%alert-error {
+  @extend %alert-base;
+  background: $color-error-50;
+  border-color: $color-error-200;
+  color: $color-error-700;
+}
+
+// ============================================================================
+// TYPOGRAPHY PATTERNS
+// ============================================================================
+
+// ----------------------------------------------------------------------------
+// Headings
+// ----------------------------------------------------------------------------
+%heading-hero {
+  font-family: $font-family-primary;
+  font-size: $hero-heading-size;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+  color: $hero-text-color;
+  margin: 0;
+}
+
+%heading-1 {
+  font-family: $font-family-primary;
+  font-size: $font-size-4xl;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+  color: $color-text-primary;
+  margin: 0 0 $spacing-6 0;
+}
+
+%heading-2 {
+  font-family: $font-family-primary;
+  font-size: $font-size-3xl;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+  color: $color-text-primary;
+  margin: 0 0 $spacing-4 0;
+}
+
+%heading-3 {
+  font-family: $font-family-primary;
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-normal;
+  color: $color-text-primary;
+  margin: 0 0 $spacing-4 0;
+}
+
+%heading-4 {
+  font-family: $font-family-primary;
+  font-size: $font-size-xl;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-normal;
+  color: $color-text-primary;
+  margin: 0 0 $spacing-3 0;
+}
+
+// ----------------------------------------------------------------------------
+// Body Text
+// ----------------------------------------------------------------------------
+%text-body {
+  font-family: $font-family-primary;
+  font-size: $font-size-base;
+  font-weight: $font-weight-normal;
+  line-height: $line-height-relaxed;
+  color: $color-text-primary;
+}
+
+%text-body-secondary {
+  @extend %text-body;
+  color: $color-text-secondary;
+}
+
+%text-small {
+  font-size: $font-size-sm;
+  line-height: $line-height-normal;
+  color: $color-text-secondary;
+}
+
+%text-xs {
+  font-size: $font-size-xs;
+  line-height: $line-height-normal;
+  color: $color-text-tertiary;
+}
+
+// ----------------------------------------------------------------------------
+// Link Styles
+// ----------------------------------------------------------------------------
+%link-base {
+  color: $color-text-link;
+  text-decoration: none;
+  transition: $transition-colors;
+  cursor: pointer;
+  
+  &:hover {
+    color: $color-text-link-hover;
+    text-decoration: underline;
+  }
+  
+  &:focus-visible {
+    outline: 2px solid $color-border-focus;
+    outline-offset: 2px;
+    border-radius: $radius-sm;
+  }
+}
+
+%link-underline {
+  @extend %link-base;
+  text-decoration: underline;
+  
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+// ============================================================================
+// BADGE & TAG PATTERNS (extends PrimeVue Badge)
+// ============================================================================
+
+// ----------------------------------------------------------------------------
+// Badge Base
+// ----------------------------------------------------------------------------
+%badge-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: $badge-padding-y $badge-padding-x;
+  font-size: $badge-font-size;
+  font-weight: $badge-font-weight;
+  line-height: 1;
+  border-radius: $badge-border-radius;
+  white-space: nowrap;
+}
+
+// ----------------------------------------------------------------------------
+// Badge Variants
+// ----------------------------------------------------------------------------
+%badge-primary {
+  @extend %badge-base;
+  background: $color-primary-100;
+  color: $color-primary-700;
+}
+
+%badge-success {
+  @extend %badge-base;
+  background: $color-success-100;
+  color: $color-success-700;
+}
+
+%badge-warning {
+  @extend %badge-base;
+  background: $color-warning-100;
+  color: $color-warning-700;
+}
+
+%badge-error {
+  @extend %badge-base;
+  background: $color-error-100;
+  color: $color-error-700;
+}
+
+%badge-info {
+  @extend %badge-base;
+  background: $color-info-100;
+  color: $color-info-700;
+}
+
+%badge-neutral {
+  @extend %badge-base;
+  background: $color-gray-100;
+  color: $color-gray-700;
+}
+
+// ============================================================================
+// LOADING & STATE PATTERNS
+// ============================================================================
+
+// ----------------------------------------------------------------------------
+// Spinner
+// ----------------------------------------------------------------------------
+%spinner-base {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 2px solid $color-gray-200;
+  border-top-color: $color-primary-600;
+  border-radius: $radius-full;
+  animation: spin 0.6s linear infinite;
+}
+
+%spinner-sm {
+  width: 1rem;
+  height: 1rem;
+  border-width: 2px;
+}
+
+%spinner-lg {
+  width: 2rem;
+  height: 2rem;
+  border-width: 3px;
+}
+
+// ----------------------------------------------------------------------------
+// Loading Overlay
+// ----------------------------------------------------------------------------
+%loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba($color-white, 0.8);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  z-index: $z-index-fixed;
+}
+
+// ============================================================================
+// DIVIDER PATTERNS
+// ============================================================================
+
+%divider-horizontal {
+  width: 100%;
+  height: $border-width-1;
+  background: $color-border-light;
+  border: none;
+  margin: $spacing-6 0;
+}
+
+%divider-vertical {
+  width: $border-width-1;
+  height: 100%;
+  background: $color-border-light;
+  border: none;
+  margin: 0 $spacing-4;
+}
+
+// ============================================================================
+// HERO SECTION PATTERN (from login screen)
+// ============================================================================
+
+%hero-section {
+  background: $hero-bg;
+  color: $hero-text-color;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: $spacing-8;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+      rgba($color-primary-800, 0.1) 0%, 
+      rgba($color-primary-600, 0.05) 100%
+    );
+    pointer-events: none;
+  }
+}
+
+%hero-content {
+  text-align: center;
+  max-width: 36rem;
+  
+  h1 {
+    @extend %heading-hero;
+    margin-bottom: $spacing-4;
+  }
+  
+  p {
+    font-size: $hero-subheading-size;
+    opacity: 0.95;
+    margin: 0;
+  }
+}
+
+// ============================================================================
+// TIMER/COUNTDOWN PATTERN (from verification screen)
+// ============================================================================
+
+%timer-display {
+  font-family: $font-family-mono;
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  color: $color-primary-600;
+  text-align: center;
+  margin: $spacing-4 0;
+}
+
+// ============================================================================
+// CHECKBOX & RADIO PATTERNS (extends PrimeVue Checkbox)
+// ============================================================================
+
+%checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: $spacing-2;
+  cursor: pointer;
+  //user-select: none;
+  
+  input[type="checkbox"],
+  input[type="radio"] {
+    cursor: pointer;
+  }
+  
+  span {
+    font-size: $font-size-sm;
+    color: $color-text-secondary;
+  }
+}
+
+// ============================================================================
+// UTILITY PATTERNS
+// ============================================================================
+
+// ----------------------------------------------------------------------------
+// Visibility
+// ----------------------------------------------------------------------------
+%sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+%hidden {
+  display: none !important;
+}
+
+%invisible {
+  visibility: hidden !important;
+}
+
+// ----------------------------------------------------------------------------
+// Truncate Text
+// ----------------------------------------------------------------------------
+%truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+%line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+%line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+// ----------------------------------------------------------------------------
+// Scrollbar Styling
+// ----------------------------------------------------------------------------
+%custom-scrollbar {
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: $color-gray-100;
+    border-radius: $radius-base;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: $color-gray-400;
+    border-radius: $radius-base;
+    
+    &:hover {
+      background: $color-gray-500;
+    }
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Focus Ring (for accessibility)
+// ----------------------------------------------------------------------------
+%focus-ring {
+  &:focus-visible {
+    outline: 2px solid $color-border-focus;
+    outline-offset: 2px;
+    border-radius: $radius-sm;
+  }
+}
+
+// ============================================================================
+// ANIMATIONS
+// ============================================================================
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes backdropFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+// ============================================================================
+// RESPONSIVE PATTERNS
+// ============================================================================
+
+// ----------------------------------------------------------------------------
+// Stack on Mobile
+// ----------------------------------------------------------------------------
+%stack-mobile {
+  @media (max-width: $breakpoint-md) {
+    flex-direction: column;
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Hide on Mobile
+// ----------------------------------------------------------------------------
+%hide-mobile {
+  @media (max-width: $breakpoint-md) {
+    display: none !important;
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Show Only on Mobile
+// ----------------------------------------------------------------------------
+%show-mobile {
+  display: none !important;
+  
+  @media (max-width: $breakpoint-md) {
+    display: block !important;
+  }
+}

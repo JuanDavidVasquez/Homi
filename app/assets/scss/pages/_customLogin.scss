@@ -1,0 +1,470 @@
+// ============================================================================
+// Custom Login Styles - Homi Platform
+// ============================================================================
+
+// ============================================================================
+// LOGIN PAGE - LAYOUT PRINCIPAL
+// ============================================================================
+
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  background: linear-gradient(
+    135deg,
+    $color-primary-700 0%,
+    $color-primary-800 100%
+  );
+  position: relative;
+  overflow: hidden;
+
+  // Fondo decorativo tipo rejilla sutil
+  &::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.05) 1px,
+      transparent 1px
+    );
+    background-size: 30px 30px;
+    transform: rotate(-15deg);
+    pointer-events: none;
+  }
+}
+
+// ============================================================================
+// CONTENEDOR PRINCIPAL
+// ============================================================================
+
+.login-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  gap: 0;
+
+  @include respond-to-max("lg") {
+    grid-template-columns: 1fr;
+    gap: $spacing-8;
+    padding: $spacing-6;
+  }
+
+  @include respond-to-max("md") {
+    padding: $spacing-4;
+  }
+}
+
+// ============================================================================
+// HERO IZQUIERDO (carousel + texto)
+// ============================================================================
+
+.login-hero {
+  color: $color-white;
+  text-align: center;
+  padding: $spacing-8;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  @include respond-to-max("lg") {
+    padding: $spacing-4;
+  }
+
+  h1 {
+    font-size: $font-size-5xl;
+    font-weight: $font-weight-bold;
+    line-height: $line-height-tight;
+    margin-bottom: $spacing-4;
+    color: $color-white;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+
+    @include respond-to-max("lg") {
+      font-size: $font-size-4xl;
+    }
+
+    @include respond-to-max("md") {
+      font-size: $font-size-3xl;
+    }
+  }
+
+  > p {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-light;
+    opacity: 0.95;
+    line-height: $line-height-relaxed;
+    margin-bottom: $spacing-8;
+
+    @include respond-to-max("md") {
+      font-size: $font-size-lg;
+    }
+  }
+
+  .hero-illustration {
+    width: 100%;
+    max-width: 520px;
+    margin: $spacing-8 auto;
+
+    @include respond-to-max("lg") {
+      max-width: 400px;
+    }
+
+    img,
+    svg {
+      width: 100%;
+      height: auto;
+      max-height: 420px;
+      object-fit: contain;
+    }
+  }
+
+  .carousel-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: $spacing-3;
+    margin-top: $spacing-8;
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.4);
+      margin: 0 6px;
+      cursor: pointer;
+      transition: background 0.3s;
+
+      &.active {
+        background: $color-white;
+        width: 30px;
+        border-radius: 6px;
+      }
+
+      &:hover:not(.active) {
+        background: rgba($color-white, 0.5);
+      }
+    }
+  }
+
+  :deep(.p-carousel) {
+    .p-carousel-content,
+    .p-carousel-items-container {
+      overflow: visible;
+    }
+
+    .p-carousel-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .p-carousel-indicators,
+    .p-carousel-prev,
+    .p-carousel-next {
+      display: none;
+    }
+  }
+}
+
+// ============================================================================
+// LOGIN CARD - FORMULARIO
+// ============================================================================
+
+.login-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: $color-white;
+  width: 100%;
+  height: 100vh;
+  padding: $spacing-10 $spacing-12;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.08);
+  border-radius: 0;
+  position: relative;
+  z-index: 2;
+
+  @include respond-to-max("lg") {
+    height: auto;
+    border-radius: $radius-2xl;
+    padding: $spacing-8 $spacing-6;
+  }
+
+  .card-background {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: $color-white;
+    width: auto;
+    min-width: 80%;
+    padding: $spacing-10 $spacing-12;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.08);
+    border-radius: $radius-base;
+    position: relative;
+    z-index: 2;
+    border: 1px solid $color-border-light !important;
+
+    .container-forms{
+      width: 100%;
+    }
+
+    // LOGO ICON
+    .logo-icon {
+      width: 90px;
+      height: 90px;
+      margin-bottom: $spacing-6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: $color-primary-400;
+      border-radius: $radius-full;
+      box-shadow: 0 4px 10px rgba($color-primary-600, 0.3);
+      transform: translate(0, -101px);
+      padding: 0px;
+      border-bottom: 1px solid #9ca3af;
+
+      .icon-inner {
+        width: 87px;
+        height: 87px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #c084fc;
+        border-radius: 50%;
+      }
+
+      img {
+        width: 60%;
+        height: 60%;
+        object-fit: contain;
+      }
+    }
+
+    .card-header {
+      text-align: center;
+      margin-bottom: $spacing-8;
+
+      h2 {
+        font-size: $font-size-3xl;
+        font-weight: $font-weight-bold;
+        color: $color-secondary-900;
+        margin-bottom: $spacing-2;
+      }
+
+      p {
+        font-size: $font-size-base;
+        color: $color-text-secondary;
+      }
+    }
+
+    // ========================================================================
+    // FORMULARIO
+    // ========================================================================
+    .login-form {
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto;
+
+      .form-group {
+        margin-bottom: $spacing-5;
+
+        &:last-of-type {
+          margin-bottom: $spacing-4;
+        }
+      }
+
+      .form-label {
+        display: block;
+        font-size: $font-size-sm;
+        font-weight: $font-weight-medium;
+        color: $color-text-primary;
+        margin-bottom: $spacing-2;
+      }
+
+      // INPUT CON ICONO
+.input-with-icon {
+  position: relative;
+
+  /* Icono dentro del input (email, password) */
+  .input-icon {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 48px;
+    background: $color-secondary-900;
+    border-radius: $radius-md 0 0 $radius-md;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+
+    i,
+    svg {
+      color: $color-white;
+      font-size: $font-size-lg;
+    }
+  }
+.p-password-toggle-mask-icon{
+    position: absolute;
+    right: 20px;
+    top: 30%;
+    width: 20px !important;
+    height: 20px !important;
+    i,
+    svg {
+      color: $color-white;
+      font-size: $font-size-lg;
+    }
+}
+  /* Estilos generales para inputs */
+  input,
+  .p-inputtext,
+  .p-password input {
+    width: 100%;
+    height: 50px !important;
+    padding-left: 58px !important;
+    padding-right: 48px !important;
+    border: 1px solid $color-border-light;
+    border-radius: $radius-md;
+    font-size: $font-size-base;
+    background: $color-gray-50;
+    transition: all 0.25s ease;
+
+    &:focus {
+      border-color: $color-primary-600;
+      box-shadow: 0 0 0 3px rgba($color-primary-500, 0.1);
+      background: $color-white;
+    }
+
+    &::placeholder {
+      color: $color-gray-400;
+    }
+  }
+
+  /* Ajustes específicos para Password */
+  :deep(.p-password) {
+    width: 100%;
+
+    .p-password-input {
+      width: 100%;
+      height: 50px;
+      padding-left: 58px !important;
+      padding-right: 48px !important; // espacio para el toggle
+    }
+
+    /* Posicionar correctamente el toggle (ojo) */
+    .p-password-toggle {
+      position: absolute;
+      top: 50%;
+      right: 12px;
+      transform: translateY(-50%);
+      z-index: 3;
+
+      .p-password-toggle-icon {
+        color: $color-gray-500;
+        font-size: 1rem;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: $color-primary-600;
+        }
+      }
+    }
+  }
+}
+
+      // OPCIONES
+      .form-options {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: $spacing-2;
+        margin-bottom: $spacing-6;
+
+        @include respond-to-max("sm") {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: $spacing-3;
+        }
+
+        .form-checkbox {
+          display: flex;
+          align-items: center;
+          gap: $spacing-2;
+        }
+
+        .form-checkbox label {
+          font-size: $font-size-sm;
+          color: $color-text-secondary;
+        }
+
+        .forgot-link {
+          font-size: $font-size-sm;
+          color: $color-primary-700;
+          font-weight: $font-weight-medium;
+
+          &:hover {
+            text-decoration: underline;
+            color: $color-primary-800;
+            cursor: pointer;
+          }
+        }
+      }
+
+      // BOTÓN SUBMIT
+      .submit-button {
+        width: 100%;
+        height: 52px !important;
+        background: $color-secondary-900 !important;
+        color: $color-white !important;
+        border: none !important;
+        border-radius: $radius-xl !important;
+        font-size: $font-size-base !important;
+        font-weight: $font-weight-semibold !important;
+        transition: all 0.25s ease;
+
+        &:hover {
+          background: lighten($color-secondary-900, 5%) !important;
+          box-shadow: 0 6px 15px rgba($color-secondary-900, 0.3);
+          transform: translateY(-1px);
+        }
+
+        &:active {
+          transform: translateY(0);
+        }
+      }
+
+      // LINK REGISTRO
+      .secondary-link {
+        display: block;
+        text-align: center;
+        margin-top: $spacing-6;
+        font-size: $font-size-sm;
+        color: $color-text-secondary;
+
+        &:hover {
+          color: $color-text-primary;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+.slide-fade-enter-active,
+.slide-fade-leave-active {
+  transition: all 0.4s ease;
+}
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  opacity: 0;
+  transform: translateX(50px);
+}

@@ -1,0 +1,31 @@
+/* ===========================
+   🔄 RESET CSS MODERNO
+   =========================== */
+
+// ✅ Normalización de elementos HTML
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+// ✅ Reset de formularios
+input, button, textarea, select {
+  font: inherit;
+  border: none;
+  background: transparent;
+}
+
+// ✅ Reset de imágenes
+img { display: block; max-width: 100%; }
+
+// ✅ Reset de listas
+ul, ol { list-style: none; }
+
+// ✅ Accesibilidad
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.01ms !important; }
+}

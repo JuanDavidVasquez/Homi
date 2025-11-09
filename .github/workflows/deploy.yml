@@ -34,6 +34,6 @@ jobs:
           server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./.output/public
+          local-dir: ./.output/public/
           server-dir: /public_html/homi
           security: loose

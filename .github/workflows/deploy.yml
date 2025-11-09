@@ -1,0 +1,38 @@
+name: Deploy Homi Client to Staging
+
+on:
+  push:
+    branches:
+      - staging
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Nuxt 4
+        run: npm run build && npm run generate
+        env:
+          NUXT_PUBLIC_API_BASE: ${{ secrets.NUXT_PUBLIC_API_BASE }}
+          # NUXT_PUBLIC_OTRA_VAR: ${{ secrets.NUXT_PUBLIC_OTRA_VAR }}
+
+      - name: Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@4.4.0
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./.output/public
+          server-dir: /public_html
+          git-ftp-args: --insecure

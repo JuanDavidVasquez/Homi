@@ -26,6 +26,7 @@ jobs:
         env:
           NUXT_PUBLIC_API_BASE: ${{ secrets.NUXT_PUBLIC_API_BASE }}
           # NUXT_PUBLIC_OTRA_VAR: ${{ secrets.NUXT_PUBLIC_OTRA_VAR }}
+          # Add other necessary environment variables here
 
       - name: Deploy via FTP
         uses: SamKirkland/FTP-Deploy-Action@4.4.0

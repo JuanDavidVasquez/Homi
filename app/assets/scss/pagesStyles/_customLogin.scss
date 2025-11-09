@@ -204,7 +204,7 @@
     background: $color-white;
     width: auto;
     min-width: 80%;
-    padding: $spacing-10 $spacing-12;
+    padding: $spacing-1 $spacing-2;
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.08);
     border-radius: $radius-base;
     position: relative;
@@ -226,7 +226,7 @@
       background: $color-primary-400;
       border-radius: $radius-full;
       box-shadow: 0 4px 10px rgba($color-primary-600, 0.3);
-      transform: translate(0, -101px);
+      transform: translate(0, -50px);
       padding: 0px;
       border-bottom: 1px solid #9ca3af;
 

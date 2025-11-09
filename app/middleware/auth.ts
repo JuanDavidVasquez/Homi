@@ -12,7 +12,7 @@ export default defineNuxtRouteMiddleware((to) => {
 
   // Si no está autenticado, redirigir al login
   if (!auth.isAuthenticated) {
-    const loginPath = localePath('/login')
+    const loginPath = localePath('/auth/login')
 
     // 🔒 Evitar bucles
     if (to.path !== loginPath) {

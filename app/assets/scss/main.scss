@@ -42,7 +42,8 @@
 @import 'components/loading'; */
 
 // 6. Pages - Page-specific styles
-@import 'pages/customLogin';
+@import 'pagesStyles/customLogin';
+@import 'pagesStyles/_verifyPassword';
 /*@import 'pages/dashboard';
 @import 'pages/residents';
 @import 'pages/payments';
@@ -50,7 +51,5 @@
 @import 'pages/settings';
 @import 'pages/error'; */
 
-// 7. Utils - Utilities and overrides (should be last)
-/* @import 'utils/utilities';
-@import 'utils/print';
-@import 'utils/shame';  */
+// 7. UI
+@import 'ui/modal';

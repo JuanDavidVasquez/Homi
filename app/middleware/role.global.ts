@@ -10,14 +10,15 @@ export default defineNuxtRouteMiddleware((to) => {
   }
 
   // Evitar bucle si ya está en login o register
-  const publicPages = ['/login', '/register', '/forgot-password']
+  const publicPages = ['/auth/login', '/auth/register', '/auth/forgot-password', '/auth/verify-password']
+
   if (publicPages.includes(to.path)) return
 
   // Si no está autenticado, redirigir
   if (!authStore.isAuthenticated) {
     const redirectCookie = useCookie('redirect-after-login')
     redirectCookie.value = to.fullPath
-    return navigateTo('/login')
+    return navigateTo('/auth/login')
   }
 
   // Roles requeridos

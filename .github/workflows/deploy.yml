@@ -8,6 +8,7 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    environment: staging   # acceso a secrets del Environment
 
     steps:
       - name: Checkout repository
@@ -25,8 +26,7 @@ jobs:
         run: npm run build && npm run generate
         env:
           NUXT_PUBLIC_API_BASE: ${{ secrets.NUXT_PUBLIC_API_BASE }}
-          # NUXT_PUBLIC_OTRA_VAR: ${{ secrets.NUXT_PUBLIC_OTRA_VAR }}
-          # Add other necessary environment variables here
+          NUXT_PUBLIC_SITE_URL: ${{ secrets.NUXT_PUBLIC_SITE_URL }}
 
       - name: Deploy via FTP
         uses: samkirkland/ftp-deploy-action@v4.3.6

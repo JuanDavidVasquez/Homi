@@ -10,25 +10,25 @@ export default defineNuxtConfig({
     "@primevue/nuxt-module",
     "@pinia/nuxt",
     "@nuxtjs/sitemap",
-[
-  "@nuxtjs/i18n",
-  {
-    locales: [
-      { code: "es", language: "es-CO", file: "es.ts", name: "Español" },
-      { code: "en", language: "en-US", file: "en.ts", name: "English" },
+    [
+      "@nuxtjs/i18n",
+      {
+        locales: [
+          { code: "es", language: "es-CO", file: "es.ts", name: "Español" },
+          { code: "en", language: "en-US", file: "en.ts", name: "English" },
+        ],
+        defaultLocale: "es",
+        lazy: true,
+        langDir: "lang/",
+        strategy: "prefix_except_default",
+        detectBrowserLanguage: {
+          useCookie: true,
+          cookieKey: 'i18n_redirected',
+          redirectOn: 'root',
+          alwaysRedirect: false,
+        },
+      },
     ],
-    defaultLocale: "es",
-    lazy: true,
-    langDir: "lang/",
-    strategy: "prefix_except_default",
-    detectBrowserLanguage: {
-      useCookie: true,
-      cookieKey: 'i18n_redirected',
-      redirectOn: 'root',
-      alwaysRedirect: false,
-    },
-  },
-],
 
   ],
   app: {
@@ -103,7 +103,10 @@ export default defineNuxtConfig({
       apiBase: process.env.NUXT_PUBLIC_API_BASE || 'http://localhost:3001/api'
     }
   },
-   nitro: {
+  nitro: {
     preset: 'static'
+  },
+  sitemap: {
+    urls: ['http://apihomi.onelessonperday.com/']
   }
 })

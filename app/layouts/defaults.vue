@@ -1,5 +1,5 @@
 <template>
-    <div class="admin-layout">
+    <div class="default-layout">
         <NuxtPage />
     </div>
 </template>

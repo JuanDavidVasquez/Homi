@@ -1,0 +1,729 @@
+// ============================================================================
+// DASHBOARD & USERS PAGE STYLES
+// ============================================================================
+// Styles for the main dashboard and users management pages
+// Includes stats cards, activity lists, and quick actions
+// ============================================================================
+
+.dashboard-page {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-6;
+}
+
+// ============================================================================
+// PAGE HEADER
+// ============================================================================
+.page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: $spacing-4;
+  margin-bottom: $spacing-2;
+
+  @include respond-to-max('md') {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+.page-title {
+  font-size: $font-size-3xl;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  margin: 0 0 $spacing-2 0;
+
+  @include respond-to-max('md') {
+    font-size: $font-size-2xl;
+  }
+}
+
+.page-description {
+  font-size: $font-size-base;
+  color: $color-text-secondary;
+  margin: 0;
+  line-height: $line-height-relaxed;
+}
+
+.page-actions {
+  display: flex;
+  align-items: center;
+  gap: $spacing-3;
+  flex-shrink: 0;
+
+  @include respond-to-max('md') {
+    width: 100%;
+    
+    :deep(.p-button) {
+      flex: 1;
+    }
+  }
+}
+
+// ============================================================================
+// STATS GRID - Tarjetas de Estadísticas
+// ============================================================================
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: $spacing-6;
+
+  @include respond-to-max('md') {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: $spacing-4;
+  }
+
+  @include respond-to-max('sm') {
+    grid-template-columns: 1fr;
+  }
+}
+
+.stat-card {
+  position: relative;
+  overflow: hidden;
+  transition: $transition-all;
+  border: $border-width-1 solid $color-border-light;
+  border-radius: $radius-lg !important;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $shadow-lg;
+    border-color: transparent;
+  }
+
+  :deep(.p-card-body) {
+    padding: $spacing-6;
+  }
+
+  :deep(.p-card-content) {
+    padding: 0;
+  }
+
+  // Decorative gradient overlay
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 120px;
+    height: 120px;
+    background: linear-gradient(135deg, transparent 50%, rgba($color-primary-100, 0.1) 50%);
+    pointer-events: none;
+  }
+}
+
+.stat-content {
+  display: flex;
+  align-items: flex-start;
+  gap: $spacing-4;
+  position: relative;
+  z-index: 1;
+}
+
+.stat-icon {
+  width: 4rem;
+  height: 4rem;
+  border-radius: $radius-xl;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  transition: $transition-transform;
+
+  i {
+    font-size: $font-size-2xl;
+  }
+
+  // Subtle shadow for depth
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 10%;
+    right: 10%;
+    height: 8px;
+    background: currentColor;
+    filter: blur(8px);
+    opacity: 0.2;
+    border-radius: $radius-full;
+  }
+
+  &.success {
+    background: linear-gradient(135deg, $color-success-100 0%, $color-success-50 100%);
+    color: $color-success-700;
+  }
+
+  &.primary {
+    background: linear-gradient(135deg, $color-primary-100 0%, $color-primary-50 100%);
+    color: $color-primary-700;
+  }
+
+  &.warning {
+    background: linear-gradient(135deg, $color-warning-100 0%, $color-warning-50 100%);
+    color: $color-warning-700;
+  }
+
+  &.info {
+    background: linear-gradient(135deg, $color-info-100 0%, $color-info-50 100%);
+    color: $color-info-700;
+  }
+
+  &.error {
+    background: linear-gradient(135deg, $color-error-100 0%, $color-error-50 100%);
+    color: $color-error-700;
+  }
+}
+
+.stat-card:hover .stat-icon {
+  transform: scale(1.05);
+}
+
+.stat-details {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-2;
+  flex: 1;
+  min-width: 0;
+}
+
+.stat-label {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  font-weight: $font-weight-medium;
+  text-transform: uppercase;
+  letter-spacing: $letter-spacing-wide;
+  margin: 0;
+}
+
+.stat-value {
+  font-size: $font-size-4xl;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  line-height: 1;
+  margin: 0;
+
+  @include respond-to-max('md') {
+    font-size: $font-size-3xl;
+  }
+}
+
+.stat-change {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-semibold;
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-1;
+  padding: $spacing-1 $spacing-2;
+  border-radius: $radius-base;
+  width: fit-content;
+
+  &.positive {
+    color: $color-success-700;
+    background: $color-success-50;
+  }
+
+  &.negative {
+    color: $color-error-700;
+    background: $color-error-50;
+  }
+
+  &.neutral {
+    color: $color-text-tertiary;
+    background: $color-gray-100;
+  }
+
+  i {
+    font-size: 0.75rem;
+  }
+}
+
+// ============================================================================
+// CONTENT GRID
+// ============================================================================
+.content-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: $spacing-6;
+
+  @include respond-to-max('lg') {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $spacing-6;
+  border-bottom: $border-width-1 solid $color-border-light;
+
+  h3 {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+    color: $color-text-primary;
+    margin: 0;
+  }
+
+  .header-actions {
+    display: flex;
+    gap: $spacing-2;
+  }
+}
+
+// ============================================================================
+// ACTIVITY LIST
+// ============================================================================
+.activity-card {
+  :deep(.p-card-body) {
+    padding: 0;
+  }
+
+  :deep(.p-card-content) {
+    padding: 0;
+  }
+}
+
+.activity-list {
+  display: flex;
+  flex-direction: column;
+  max-height: 600px;
+  overflow-y: auto;
+  @include scrollbar();
+}
+
+.activity-item {
+  display: flex;
+  align-items: flex-start;
+  gap: $spacing-4;
+  padding: $spacing-5 $spacing-6;
+  border-bottom: $border-width-1 solid $color-border-light;
+  transition: $transition-colors;
+  position: relative;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover {
+    background: $color-gray-50;
+
+    .activity-icon {
+      transform: scale(1.05);
+    }
+  }
+
+  // Decorative line on hover
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: $color-primary-600;
+    transform: scaleY(0);
+    transition: transform $transition-base $ease-out;
+  }
+
+  &:hover::before {
+    transform: scaleY(1);
+  }
+}
+
+.activity-icon {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: $radius-full;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: $transition-transform;
+  position: relative;
+
+  i {
+    font-size: $font-size-xl;
+  }
+
+  // Shadow effect
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 15%;
+    right: 15%;
+    height: 6px;
+    background: currentColor;
+    filter: blur(6px);
+    opacity: 0.2;
+    border-radius: $radius-full;
+  }
+
+  &.success {
+    background: linear-gradient(135deg, $color-success-100 0%, $color-success-50 100%);
+    color: $color-success-700;
+  }
+
+  &.warning {
+    background: linear-gradient(135deg, $color-warning-100 0%, $color-warning-50 100%);
+    color: $color-warning-700;
+  }
+
+  &.info {
+    background: linear-gradient(135deg, $color-info-100 0%, $color-info-50 100%);
+    color: $color-info-700;
+  }
+
+  &.primary {
+    background: linear-gradient(135deg, $color-primary-100 0%, $color-primary-50 100%);
+    color: $color-primary-700;
+  }
+
+  &.error {
+    background: linear-gradient(135deg, $color-error-100 0%, $color-error-50 100%);
+    color: $color-error-700;
+  }
+}
+
+.activity-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-1;
+  min-width: 0;
+}
+
+.activity-title {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+  margin: 0;
+  line-height: $line-height-normal;
+}
+
+.activity-description {
+  font-size: $font-size-xs;
+  color: $color-text-secondary;
+  line-height: $line-height-normal;
+}
+
+.activity-time {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+  font-weight: $font-weight-medium;
+  display: flex;
+  align-items: center;
+  gap: $spacing-1;
+
+  i {
+    font-size: 0.625rem;
+  }
+}
+
+// ============================================================================
+// QUICK ACTIONS
+// ============================================================================
+.quick-actions-card {
+  :deep(.p-card-body) {
+    padding: 0;
+  }
+
+  :deep(.p-card-content) {
+    padding: $spacing-6;
+  }
+}
+
+.quick-actions-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $spacing-4;
+
+  @include respond-to-max('sm') {
+    grid-template-columns: 1fr;
+  }
+}
+
+.quick-action-btn {
+  @include reset-button();
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-3;
+  padding: $spacing-6;
+  border-radius: $radius-xl;
+  border: $border-width-2 solid $color-border-light;
+  background: $color-white;
+  transition: $transition-all;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+
+  // Subtle gradient background
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, transparent 0%, $color-primary-50 100%);
+    opacity: 0;
+    transition: opacity $transition-base $ease-out;
+  }
+
+  i {
+    font-size: $font-size-3xl;
+    color: $color-primary-600;
+    transition: $transition-transform;
+    position: relative;
+    z-index: 1;
+  }
+
+  span {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    color: $color-text-primary;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    line-height: $line-height-snug;
+  }
+
+  &:hover {
+    border-color: $color-primary-600;
+    transform: translateY(-4px);
+    box-shadow: $shadow-lg;
+
+    &::before {
+      opacity: 1;
+    }
+
+    i {
+      transform: scale(1.1);
+      color: $color-primary-700;
+    }
+
+    span {
+      color: $color-primary-700;
+    }
+  }
+
+  &:active {
+    transform: translateY(-2px);
+  }
+}
+
+// ============================================================================
+// EMPTY STATE
+// ============================================================================
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-12 $spacing-6;
+  text-align: center;
+
+  .empty-icon {
+    font-size: 4rem;
+    color: $color-gray-300;
+    margin-bottom: $spacing-4;
+  }
+
+  .empty-title {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-semibold;
+    color: $color-text-primary;
+    margin-bottom: $spacing-2;
+  }
+
+  .empty-description {
+    font-size: $font-size-base;
+    color: $color-text-secondary;
+    max-width: 400px;
+    line-height: $line-height-relaxed;
+  }
+
+  .empty-action {
+    margin-top: $spacing-6;
+  }
+}
+
+// ============================================================================
+// TABLE STYLES (for users list)
+// ============================================================================
+.users-table-container {
+  background: $color-white;
+  border-radius: $radius-xl;
+  border: $border-width-1 solid $color-border-light;
+  overflow: hidden;
+
+  :deep(.p-datatable) {
+    .p-datatable-header {
+      background: $color-white;
+      padding: $spacing-5 $spacing-6;
+      border-bottom: $border-width-1 solid $color-border-light;
+    }
+
+    .p-datatable-thead > tr > th {
+      background: $color-gray-50;
+      padding: $spacing-4 $spacing-6;
+      font-weight: $font-weight-semibold;
+      font-size: $font-size-xs;
+      text-transform: uppercase;
+      letter-spacing: $letter-spacing-wide;
+      color: $color-text-secondary;
+      border-bottom: $border-width-2 solid $color-border-light;
+    }
+
+    .p-datatable-tbody > tr {
+      transition: $transition-colors;
+
+      &:hover {
+        background: $color-gray-50;
+      }
+
+      > td {
+        padding: $spacing-4 $spacing-6;
+        border-bottom: $border-width-1 solid $color-border-light;
+      }
+    }
+  }
+}
+
+// ============================================================================
+// USER AVATAR & INFO
+// ============================================================================
+.user-cell {
+  display: flex;
+  align-items: center;
+  gap: $spacing-3;
+}
+
+.user-avatar-cell {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: $radius-full;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $color-primary-100;
+  color: $color-primary-700;
+  font-weight: $font-weight-semibold;
+  font-size: $font-size-sm;
+  flex-shrink: 0;
+}
+
+.user-info-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.user-name-cell {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.user-email-cell {
+  font-size: $font-size-xs;
+  color: $color-text-secondary;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// ============================================================================
+// STATUS BADGES
+// ============================================================================
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-1;
+  padding: $spacing-1 $spacing-3;
+  border-radius: $radius-full;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-semibold;
+  white-space: nowrap;
+
+  &.active {
+    background: $color-success-100;
+    color: $color-success-700;
+
+    &::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: $radius-full;
+      background: $color-success-600;
+    }
+  }
+
+  &.inactive {
+    background: $color-gray-100;
+    color: $color-gray-700;
+
+    &::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: $radius-full;
+      background: $color-gray-500;
+    }
+  }
+
+  &.pending {
+    background: $color-warning-100;
+    color: $color-warning-700;
+
+    &::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: $radius-full;
+      background: $color-warning-600;
+    }
+  }
+}
+
+// ============================================================================
+// RESPONSIVE ADJUSTMENTS
+// ============================================================================
+@include respond-to-max('md') {
+  .dashboard-page {
+    gap: $spacing-4;
+  }
+
+  .page-header {
+    margin-bottom: $spacing-4;
+  }
+
+  .card-header {
+    padding: $spacing-4;
+    flex-wrap: wrap;
+    gap: $spacing-3;
+
+    .header-actions {
+      width: 100%;
+    }
+  }
+
+  .activity-item {
+    padding: $spacing-4;
+  }
+
+  .quick-actions-grid {
+    gap: $spacing-3;
+  }
+
+  .quick-action-btn {
+    padding: $spacing-4;
+  }
+}

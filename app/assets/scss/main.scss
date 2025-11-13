@@ -41,9 +41,14 @@
 @import 'components/avatars';
 @import 'components/loading'; */
 
+@import 'componentsStyles/headerAdmin';
+@import 'componentsStyles/sidebarAdmin';
+
 // 6. Pages - Page-specific styles
 @import 'pagesStyles/customLogin';
 @import 'pagesStyles/_verifyPassword';
+@import 'pagesStyles/adminLayout';
+@import 'pagesStyles/users';
 /*@import 'pages/dashboard';
 @import 'pages/residents';
 @import 'pages/payments';

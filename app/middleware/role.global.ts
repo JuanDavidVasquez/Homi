@@ -1,34 +1,45 @@
 // middleware/role.global.ts
-import { useAuthStore } from '~/store/auth.store'
+import { useAuthStore } from "~/store/auth.store";
 
 export default defineNuxtRouteMiddleware((to) => {
-  const authStore = useAuthStore()
+  const authStore = useAuthStore();
 
   // Cargar sesión si hace falta
   if (process.client && !authStore.isAuthenticated) {
-    authStore.loadSession()
+    authStore.loadSession();
   }
 
   // Evitar bucle si ya está en login o register
-  const publicPages = ['/auth/login', '/auth/register', '/auth/forgot-password', '/auth/verify-password']
+  const publicPages = [
+    "/auth/login",
+    "/auth/register",
+    "/auth/forgot-password",
+    "/auth/verify-password",
+    "/users",
+    "/dashboard",
+    "/admins",
+    "/towers",
+    "/apartments",
+    "/settings"
+  ];
 
-  if (publicPages.includes(to.path)) return
+  if (publicPages.includes(to.path)) return;
 
   // Si no está autenticado, redirigir
   if (!authStore.isAuthenticated) {
-    const redirectCookie = useCookie('redirect-after-login')
-    redirectCookie.value = to.fullPath
-    return navigateTo('/auth/login')
+    const redirectCookie = useCookie("redirect-after-login");
+    redirectCookie.value = to.fullPath;
+    return navigateTo("/auth/login");
   }
 
   // Roles requeridos
-  const requiredRoles = (to.meta.roles || []) as string[]
-  if (!requiredRoles.length) return
+  const requiredRoles = (to.meta.roles || []) as string[];
+  if (!requiredRoles.length) return;
 
-  const userRole = authStore.user?.role
+  const userRole = authStore.user?.role;
   if (!userRole || !requiredRoles.includes(userRole)) {
-    return navigateTo('/403')
+    return navigateTo("/403");
   }
 
-  return
-})
+  return;
+});

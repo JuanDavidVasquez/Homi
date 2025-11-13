@@ -3,5 +3,5 @@
 </template>
 <!-- pages/index.vue -->
 <script setup lang="ts">
-navigateTo('/auth/login')
+//navigateTo('/auth/login')
 </script>

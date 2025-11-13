@@ -1,0 +1,316 @@
+.admin-header {
+  position: fixed;
+  top: 0;
+  left: 280px;
+  right: 0;
+  height: 70px;
+  background: $color-white;
+  border-bottom: $border-width-1 solid $color-border-light;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 $spacing-6;
+  z-index: $z-index-fixed;
+  transition: left $transition-base $ease-in-out;
+  box-shadow: $shadow-sm;
+
+  &.collapsed {
+    left: 80px;
+  }
+
+  @include respond-to-max('lg') {
+    left: 0;
+  }
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: $spacing-4;
+  height: 100%;
+}
+
+.mobile-menu-toggle {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  border-radius: $radius-base;
+  color: $color-text-secondary;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: $transition-colors;
+
+  &:hover {
+    background: $color-gray-100;
+    color: $color-primary-700;
+  }
+
+  @include respond-to-max('lg') {
+    display: flex;
+  }
+}
+
+.page-title {
+  h1 {
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-bold;
+    color: $color-text-primary;
+    margin: 0;
+    line-height: 1.2;
+
+    @include respond-to-max('md') {
+      font-size: $font-size-xl;
+    }
+  }
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: $spacing-4;
+  height: 100%;
+}
+
+.header-search {
+  @include respond-to-max('md') {
+    display: none;
+  }
+
+  :deep(.p-iconfield) {
+    position: relative;
+    display: inline-block;
+  }
+
+  :deep(.p-inputtext) {
+    width: 300px;
+    height: 2.75rem;
+    padding-left: 2.75rem;
+    padding-right: $spacing-4;
+    border-radius: $radius-full;
+    border: $border-width-1 solid $color-border-light;
+    font-size: $font-size-sm;
+    transition: $transition-colors;
+
+    &::placeholder {
+      color: $color-text-tertiary;
+    }
+
+    &:focus {
+      border-color: $color-primary-500;
+      box-shadow: 0 0 0 3px rgba($color-primary-500, 0.1);
+      outline: none;
+    }
+  }
+
+  :deep(.p-inputicon) {
+    position: absolute;
+    left: $spacing-3;
+    top: 50%;
+    transform: translateY(-50%);
+    color: $color-text-tertiary;
+    pointer-events: none;
+    
+    i {
+      font-size: $font-size-base;
+    }
+  }
+}
+
+.header-icon-button {
+  position: relative;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: $radius-full;
+  color: $color-text-secondary;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: $transition-colors;
+
+  &:hover {
+    background: $color-gray-100;
+    color: $color-primary-700;
+  }
+
+  i {
+    font-size: $font-size-xl;
+  }
+
+  .notification-badge {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    min-width: 1.125rem;
+    height: 1.125rem;
+    padding: 0 0.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $color-error-500;
+    color: $color-white;
+    border-radius: $radius-full;
+    font-size: 0.625rem;
+    font-weight: $font-weight-bold;
+    border: 2px solid $color-white;
+  }
+}
+
+.user-menu {
+  position: relative;
+}
+
+.user-menu-trigger {
+  display: flex;
+  align-items: center;
+  gap: $spacing-3;
+  padding: $spacing-2 $spacing-4;
+  height: 2.75rem;
+  border-radius: $radius-full;
+  background: none;
+  border: $border-width-1 solid transparent;
+  cursor: pointer;
+  transition: $transition-colors;
+
+  &:hover {
+    background: $color-gray-50;
+    border-color: $color-border-light;
+  }
+
+  .user-avatar-small {
+    width: 2rem;
+    height: 2rem;
+    border-radius: $radius-full;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $color-primary-600;
+    color: $color-white;
+    font-weight: $font-weight-semibold;
+    font-size: $font-size-sm;
+  }
+
+  .user-name-header {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    color: $color-text-primary;
+
+    @include respond-to-max('sm') {
+      display: none;
+    }
+  }
+
+  i {
+    font-size: $font-size-xs;
+    color: $color-text-tertiary;
+  }
+}
+
+.user-dropdown {
+  position: absolute;
+  top: calc(100% + $spacing-2);
+  right: 0;
+  width: 280px;
+  background: $color-white;
+  border-radius: $radius-xl;
+  box-shadow: $shadow-xl;
+  border: $border-width-1 solid $color-border-light;
+  overflow: hidden;
+  z-index: $z-index-dropdown;
+}
+
+.dropdown-header {
+  display: flex;
+  align-items: center;
+  gap: $spacing-3;
+  padding: $spacing-5;
+  background: $color-gray-50;
+}
+
+.dropdown-avatar {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: $radius-full;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $color-primary-600;
+  color: $color-white;
+  font-weight: $font-weight-bold;
+}
+
+.dropdown-user-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.dropdown-user-name {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dropdown-user-email {
+  font-size: $font-size-xs;
+  color: $color-text-secondary;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dropdown-divider {
+  height: $border-width-1;
+  background: $color-border-light;
+}
+
+.dropdown-menu {
+  list-style: none;
+  margin: 0;
+  padding: $spacing-2;
+}
+
+.dropdown-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: $spacing-3;
+  padding: $spacing-3 $spacing-4;
+  border-radius: $radius-lg;
+  font-size: $font-size-sm;
+  color: $color-text-primary;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: $transition-colors;
+  text-align: left;
+
+  &:hover {
+    background: $color-gray-50;
+  }
+
+  i {
+    font-size: $font-size-lg;
+    color: $color-text-secondary;
+  }
+
+  &.logout {
+    color: $color-error-600;
+    margin-top: $spacing-2;
+
+    &:hover {
+      background: $color-error-50;
+    }
+
+    i {
+      color: $color-error-600;
+    }
+  }
+}
